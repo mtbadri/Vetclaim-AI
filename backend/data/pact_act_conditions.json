@@ -1,0 +1,354 @@
+{
+  "metadata": {
+    "law": "Sergeant First Class Heath Robinson Honoring our Promise to Address Comprehensive Toxics (PACT) Act of 2022",
+    "public_law": "P.L. 117-168",
+    "signed": "2022-08-10",
+    "source": "38 CFR Part 3, VA.gov PACT Act"
+  },
+  "exposure_categories": {
+    "burn_pit": {
+      "label": "Burn Pit / Airborne Hazards",
+      "qualifying_service_eras": ["post_9_11"],
+      "qualifying_locations": [
+        "Afghanistan", "Iraq", "Syria", "Djibouti", "Egypt", "Jordan",
+        "Kuwait", "Oman", "Qatar", "Saudi Arabia", "Somalia", "United Arab Emirates",
+        "Yemen", "Bahrain", "Lebanon", "Philippines", "Uzbekistan", "Southwest Asia"
+      ],
+      "qualifying_dates": {
+        "start": "1990-08-02",
+        "end": "present",
+        "note": "Service after August 2, 1990 in covered locations qualifies"
+      },
+      "presumptive_conditions": [
+        {
+          "condition": "Constrictive bronchiolitis",
+          "icd_codes": ["J98.09"],
+          "notes": "Presumptive - no nexus letter required"
+        },
+        {
+          "condition": "Obliterative bronchiolitis",
+          "icd_codes": ["J98.09"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Constrictive pericarditis",
+          "icd_codes": ["I31.1"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Any cancer not previously presumptive",
+          "icd_codes": ["C00-C96"],
+          "notes": "Under PACT Act, certain cancers now presumptive for post-9/11 veterans"
+        },
+        {
+          "condition": "Rhinitis",
+          "icd_codes": ["J30", "J31.0"],
+          "notes": "Presumptive for qualifying locations"
+        },
+        {
+          "condition": "Sinusitis",
+          "icd_codes": ["J01", "J32"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Laryngitis",
+          "icd_codes": ["J04.0", "J37.0"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Pharyngitis",
+          "icd_codes": ["J02", "J31.2"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Asthma",
+          "icd_codes": ["J45"],
+          "notes": "Presumptive if diagnosed while on active duty or within 10 years of separation"
+        },
+        {
+          "condition": "Rhinosinusitis",
+          "icd_codes": ["J01.90"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Sleep apnea",
+          "icd_codes": ["G47.33"],
+          "notes": "Eligible if nexus to airborne hazard exposure shown; some ROs granting presumptive"
+        },
+        {
+          "condition": "Gastrointestinal disorders",
+          "icd_codes": ["K00-K93"],
+          "notes": "GERD and IBS eligible if nexus demonstrated"
+        },
+        {
+          "condition": "Reproductive disorders",
+          "icd_codes": [],
+          "notes": "Infertility and miscarriage may be eligible"
+        },
+        {
+          "condition": "Glioblastoma",
+          "icd_codes": ["C71.9"],
+          "notes": "Presumptive cancer for post-9/11 veterans"
+        },
+        {
+          "condition": "Head cancer of any type",
+          "icd_codes": ["C00-C14"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Neck cancer of any type",
+          "icd_codes": ["C73-C75"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Respiratory cancer",
+          "icd_codes": ["C30-C39"],
+          "notes": "Presumptive - lung, bronchus, larynx, trachea"
+        },
+        {
+          "condition": "Gastrointestinal cancer",
+          "icd_codes": ["C15-C26"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Melanoma",
+          "icd_codes": ["C43"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Reproductive cancer",
+          "icd_codes": ["C51-C63"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Urinary tract cancer",
+          "icd_codes": ["C64-C68"],
+          "notes": "Presumptive"
+        }
+      ]
+    },
+    "agent_orange": {
+      "label": "Agent Orange / Herbicide Exposure",
+      "qualifying_service_eras": ["vietnam", "korea_dmz", "thailand", "other_locations"],
+      "qualifying_locations": [
+        "Vietnam (Republic of)", "Korea (DMZ, April 1, 1968 - August 31, 1971)",
+        "Thailand (U-Tapao, Ubon, Nakhon Phanom, Udorn, Takhli, Korat, Don Muang - 1961-1975)",
+        "Laos", "Cambodia", "Guam (1958-1980)",
+        "American Samoa", "Johnston Atoll"
+      ],
+      "qualifying_dates": {
+        "vietnam": {"start": "1962-01-09", "end": "1975-05-07"},
+        "korea_dmz": {"start": "1968-04-01", "end": "1971-08-31"}
+      },
+      "presumptive_conditions": [
+        {
+          "condition": "AL amyloidosis",
+          "icd_codes": ["E85.0"],
+          "notes": "Rare blood protein disorder"
+        },
+        {
+          "condition": "Chloracne",
+          "icd_codes": ["L70.8"],
+          "notes": "Must manifest within 1 year of exposure to at least 10% disability"
+        },
+        {
+          "condition": "Type 2 Diabetes Mellitus",
+          "icd_codes": ["E11"],
+          "notes": "Most commonly claimed Agent Orange condition - DC 7913"
+        },
+        {
+          "condition": "Hodgkin's disease",
+          "icd_codes": ["C81"],
+          "notes": "Presumptive cancer"
+        },
+        {
+          "condition": "Ischemic heart disease",
+          "icd_codes": ["I20-I25"],
+          "notes": "CAD, angina, MI - must have been exposed to Agent Orange"
+        },
+        {
+          "condition": "Multiple myeloma",
+          "icd_codes": ["C90.0"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Non-Hodgkin's lymphoma",
+          "icd_codes": ["C82-C86"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Parkinson's disease",
+          "icd_codes": ["G20"],
+          "notes": "Presumptive under PACT Act expansion"
+        },
+        {
+          "condition": "Parkinsonism",
+          "icd_codes": ["G21"],
+          "notes": "Added under PACT Act"
+        },
+        {
+          "condition": "Peripheral neuropathy (early-onset)",
+          "icd_codes": ["G60.0"],
+          "notes": "Must manifest within 1 year of last exposure to 10% disability"
+        },
+        {
+          "condition": "Porphyria cutanea tarda",
+          "icd_codes": ["E80.1"],
+          "notes": "Must manifest within 1 year of exposure"
+        },
+        {
+          "condition": "Prostate cancer",
+          "icd_codes": ["C61"],
+          "notes": "Presumptive - very commonly claimed"
+        },
+        {
+          "condition": "Respiratory cancers",
+          "icd_codes": ["C30-C39"],
+          "notes": "Lung, bronchus, larynx, trachea cancers"
+        },
+        {
+          "condition": "Soft tissue sarcomas",
+          "icd_codes": ["C45-C49"],
+          "notes": "Except osteosarcoma, chondrosarcoma, Kaposi's sarcoma, mesothelioma"
+        },
+        {
+          "condition": "Bladder cancer",
+          "icd_codes": ["C67"],
+          "notes": "Added under PACT Act"
+        },
+        {
+          "condition": "Hypothyroidism",
+          "icd_codes": ["E03"],
+          "notes": "Added under PACT Act expansion"
+        },
+        {
+          "condition": "Monoclonal gammopathy of undetermined significance (MGUS)",
+          "icd_codes": ["D47.2"],
+          "notes": "Added under PACT Act"
+        }
+      ]
+    },
+    "camp_lejeune": {
+      "label": "Camp Lejeune Water Contamination",
+      "qualifying_service_eras": ["camp_lejeune_era"],
+      "qualifying_locations": ["Camp Lejeune, North Carolina", "MCAS New River, North Carolina"],
+      "qualifying_dates": {
+        "start": "1953-08-01",
+        "end": "1987-12-31",
+        "minimum_service": "30 days on base"
+      },
+      "contaminants": ["TCE (trichloroethylene)", "PCE (perchloroethylene)", "benzene", "vinyl chloride"],
+      "presumptive_conditions": [
+        {
+          "condition": "Bladder cancer",
+          "icd_codes": ["C67"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Breast cancer",
+          "icd_codes": ["C50"],
+          "notes": "Presumptive - includes male breast cancer"
+        },
+        {
+          "condition": "Esophageal cancer",
+          "icd_codes": ["C15"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Female infertility",
+          "icd_codes": ["N97"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Hepatic steatosis",
+          "icd_codes": ["K76.0"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Kidney cancer",
+          "icd_codes": ["C64"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Leukemia",
+          "icd_codes": ["C91-C95"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Lung cancer",
+          "icd_codes": ["C34"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Miscarriage",
+          "icd_codes": ["O03"],
+          "notes": "Presumptive for female veterans and family members"
+        },
+        {
+          "condition": "Multiple myeloma",
+          "icd_codes": ["C90.0"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Myelodysplastic syndromes",
+          "icd_codes": ["D46"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Neurobehavioral effects",
+          "icd_codes": ["F07.9"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Non-Hodgkin's lymphoma",
+          "icd_codes": ["C82-C86"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Renal toxicity",
+          "icd_codes": ["N17-N19"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Scleroderma",
+          "icd_codes": ["M34"],
+          "notes": "Presumptive"
+        }
+      ]
+    },
+    "radiation": {
+      "label": "Ionizing Radiation",
+      "qualifying_service_eras": ["post_wwii", "cold_war"],
+      "qualifying_locations": [
+        "Hiroshima or Nagasaki (before July 1, 1946)",
+        "Atmospheric nuclear testing sites (1945-1962)",
+        "Underground nuclear testing (Amchitka Island, Alaska, before January 1, 1974)",
+        "Enewetak Atoll cleanup",
+        "Palomares, Spain (1966)",
+        "Thule, Greenland (1968)"
+      ],
+      "presumptive_conditions": [
+        {
+          "condition": "All cancers",
+          "icd_codes": ["C00-C96"],
+          "notes": "Broad presumptive for radiation-risk activity veterans under 38 CFR 3.309(d)"
+        },
+        {
+          "condition": "Thyroid cancer",
+          "icd_codes": ["C73"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Leukemia (except chronic lymphocytic)",
+          "icd_codes": ["C91-C95"],
+          "notes": "Presumptive"
+        },
+        {
+          "condition": "Lymphomas",
+          "icd_codes": ["C81-C86"],
+          "notes": "Presumptive"
+        }
+      ]
+    }
+  }
+}

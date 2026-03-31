@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "source": "38 CFR Part 4 - Combined Ratings Table",
+    "formula": "combined = 1 - ((1-r1) * (1-r2) * ... * (1-rN)), then round to nearest 10",
+    "note": "VA uses 'whole person' math. Ratings are applied in descending order. Final result rounds to nearest 10%.",
+    "rounding_rule": "Values ending in 1-4 round down, 5-9 round up to nearest 10"
+  },
+  "formula_explanation": {
+    "step1": "Sort all individual ratings from highest to lowest",
+    "step2": "Apply each rating against the remaining 'whole person'",
+    "step3": "combined_decimal = 1 - product_of_all_(1 - rating_decimal)",
+    "step4": "Multiply by 100 to get percentage",
+    "step5": "Round to nearest 10 (5 rounds up)",
+    "example_1": {
+      "ratings": [50, 30],
+      "calculation": "1 - (0.50 * 0.70) = 1 - 0.35 = 0.65 = 65% -> rounds to 70%",
+      "result": 70
+    },
+    "example_2": {
+      "ratings": [70, 30],
+      "calculation": "1 - (0.30 * 0.70) = 1 - 0.21 = 0.79 = 79% -> rounds to 80%",
+      "result": 80
+    },
+    "example_3": {
+      "ratings": [50, 40, 20],
+      "calculation": "1 - (0.50 * 0.60 * 0.80) = 1 - 0.24 = 0.76 = 76% -> rounds to 80%",
+      "result": 80
+    },
+    "example_4": {
+      "ratings": [70, 50, 30, 10],
+      "calculation": "1 - (0.30 * 0.50 * 0.70 * 0.90) = 1 - 0.0945 = 0.9055 = 91% -> rounds to 90%",
+      "result": 90
+    }
+  },
+  "tdiu_thresholds": {
+    "single_condition": {
+      "minimum_rating": 60,
+      "note": "One condition rated at 60%+ may qualify for TDIU under 38 CFR 4.16(a)"
+    },
+    "multiple_conditions": {
+      "minimum_combined": 70,
+      "minimum_single": 40,
+      "note": "Combined 70%+ with at least one condition at 40%+ qualifies under 38 CFR 4.16(a)"
+    },
+    "extraschedular": {
+      "note": "Even if thresholds not met, TDIU possible under 38 CFR 4.16(b) if veteran is unemployable"
+    }
+  },
+  "lookup_table": {
+    "note": "Pre-computed combined ratings for common two-condition combinations",
+    "format": "first_rating + second_rating = combined_decimal (rounds to)",
+    "10": {
+      "10": {"decimal": 0.19, "rounded": 20},
+      "20": {"decimal": 0.28, "rounded": 30},
+      "30": {"decimal": 0.37, "rounded": 40},
+      "40": {"decimal": 0.46, "rounded": 50},
+      "50": {"decimal": 0.55, "rounded": 60},
+      "60": {"decimal": 0.64, "rounded": 60},
+      "70": {"decimal": 0.73, "rounded": 70},
+      "80": {"decimal": 0.82, "rounded": 80},
+      "90": {"decimal": 0.91, "rounded": 90}
+    },
+    "20": {
+      "20": {"decimal": 0.36, "rounded": 40},
+      "30": {"decimal": 0.44, "rounded": 40},
+      "40": {"decimal": 0.52, "rounded": 50},
+      "50": {"decimal": 0.60, "rounded": 60},
+      "60": {"decimal": 0.68, "rounded": 70},
+      "70": {"decimal": 0.76, "rounded": 80},
+      "80": {"decimal": 0.84, "rounded": 80},
+      "90": {"decimal": 0.92, "rounded": 90}
+    },
+    "30": {
+      "30": {"decimal": 0.51, "rounded": 50},
+      "40": {"decimal": 0.58, "rounded": 60},
+      "50": {"decimal": 0.65, "rounded": 70},
+      "60": {"decimal": 0.72, "rounded": 70},
+      "70": {"decimal": 0.79, "rounded": 80},
+      "80": {"decimal": 0.86, "rounded": 90},
+      "90": {"decimal": 0.93, "rounded": 90}
+    },
+    "40": {
+      "40": {"decimal": 0.64, "rounded": 60},
+      "50": {"decimal": 0.70, "rounded": 70},
+      "60": {"decimal": 0.76, "rounded": 80},
+      "70": {"decimal": 0.82, "rounded": 80},
+      "80": {"decimal": 0.88, "rounded": 90},
+      "90": {"decimal": 0.94, "rounded": 90}
+    },
+    "50": {
+      "50": {"decimal": 0.75, "rounded": 80},
+      "60": {"decimal": 0.80, "rounded": 80},
+      "70": {"decimal": 0.85, "rounded": 90},
+      "80": {"decimal": 0.90, "rounded": 90},
+      "90": {"decimal": 0.95, "rounded": 100}
+    },
+    "60": {
+      "60": {"decimal": 0.84, "rounded": 80},
+      "70": {"decimal": 0.88, "rounded": 90},
+      "80": {"decimal": 0.92, "rounded": 90},
+      "90": {"decimal": 0.96, "rounded": 100}
+    },
+    "70": {
+      "70": {"decimal": 0.91, "rounded": 90},
+      "80": {"decimal": 0.94, "rounded": 90},
+      "90": {"decimal": 0.97, "rounded": 100}
+    },
+    "80": {
+      "80": {"decimal": 0.96, "rounded": 100},
+      "90": {"decimal": 0.98, "rounded": 100}
+    },
+    "90": {
+      "90": {"decimal": 0.99, "rounded": 100}
+    }
+  }
+}

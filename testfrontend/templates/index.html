@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetClaim Backend Test Frontend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f2ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8ebff;
+            transform: scale(1.02);
+        }
+
+        .upload-area p {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .upload-area strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .file-item .filename {
+            flex: 1;
+            color: #333;
+        }
+
+        .file-item .remove {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .file-item .remove:hover {
+            background: #ff5252;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-test {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-test:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(12, 84, 96, 0.2);
+            border-top: 3px solid #0c5460;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .results-container {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .result-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .summary-item label {
+            display: block;
+            color: #999;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .summary-item .value {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .flag {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .flag.UNDER_RATED {
+            border-left-color: #ff6b6b;
+        }
+
+        .flag.PACT_ACT_ELIGIBLE {
+            border-left-color: #ffd93d;
+        }
+
+        .flag.TDIU_ELIGIBLE {
+            border-left-color: #6bcf7f;
+        }
+
+        .flag.COMBINED_RATING_ERROR {
+            border-left-color: #ff8c42;
+        }
+
+        .flag.WRONG_CODE {
+            border-left-color: #ff8c42;
+        }
+
+        .flag-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .flag.UNDER_RATED .flag-type {
+            background: #ff6b6b;
+        }
+
+        .flag.PACT_ACT_ELIGIBLE .flag-type {
+            background: #ffd93d;
+            color: #333;
+        }
+
+        .flag.TDIU_ELIGIBLE .flag-type {
+            background: #6bcf7f;
+        }
+
+        .flag.COMBINED_RATING_ERROR .flag-type {
+            background: #ff8c42;
+        }
+
+        .flag.WRONG_CODE .flag-type {
+            background: #ff8c42;
+        }
+
+        .flag-content {
+            color: #333;
+        }
+
+        .flag-content strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .flag-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .detail {
+            color: #666;
+        }
+
+        .detail label {
+            color: #999;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .json-viewer {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .json-viewer pre {
+            margin: 0;
+        }
+
+        .test-results {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .test-results.show {
+            display: block;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .test-header h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .test-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .test-stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .test-stat .label {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .test-stat .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .test-item {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .test-item.success {
+            border-left: 5px solid #48bb78;
+        }
+
+        .test-item.error {
+            border-left: 5px solid #f56565;
+        }
+
+        .test-item-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+        }
+
+        .test-item-header:hover {
+            background: #fafafa;
+        }
+
+        .test-item-title {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: #333;
+            flex: 1;
+        }
+
+        .test-item-desc {
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 5px;
+            max-width: 500px;
+        }
+
+        .test-item-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .test-item-status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .test-item-status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .test-item-details {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        .test-item.expanded .test-item-details {
+            display: block;
+        }
+
+        .test-detail-row {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .test-detail-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .test-detail-label {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .test-detail-value {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            color: #333;
+            word-break: break-all;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .test-detail-value pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .test-error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+
+        .test-toggle-icon {
+            display: inline-block;
+            transition: transform 0.2s;
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+
+        .test-item.expanded .test-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎖️ VetClaim Backend Tester</h1>
+            <p class="subtitle">Upload VA documents to test your auditor backend</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload Section -->
+            <div class="card">
+                <h2>📁 Upload Documents</h2>
+
+                <div class="upload-area" id="uploadArea">
+                    <strong>Drag & drop a folder or files here</strong>
+                    <p>or click to browse</p>
+                    <p style="font-size: 0.85em; color: #999;">
+                        Supported: PDF, TXT, JSON<br>Max 100MB total
+                    </p>
+                </div>
+
+                <input type="file" id="fileInput" multiple accept=".pdf,.txt,.json">
+                <input type="file" id="folderInput" webkitdirectory directory mozdirectory>
+
+                <div class="file-list" id="fileList"></div>
+
+                <div class="btn-group">
+                    <button class="btn-primary" id="processBtn" disabled>
+                        Process Files
+                    </button>
+                    <button class="btn-secondary" id="clearBtn">
+                        Clear All
+                    </button>
+                </div>
+
+                <button class="btn-test" id="testBtn" style="width: 100%; margin-top: 10px;">
+                    🧪 Test Backend Connection
+                </button>
+
+                <div class="status" id="uploadStatus"></div>
+
+                <!-- Test Results Panel -->
+                <div class="test-results" id="testResults"></div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card">
+                <h2>📊 Quick Stats</h2>
+
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <label>Veteran Name</label>
+                        <div class="value" id="statVeteranName">—</div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Claim Number</label>
+                        <div class="value" id="statClaimNumber">—</div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Current Rating</label>
+                        <div class="value" id="statCurrentRating">—</div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Potential Rating</label>
+                        <div class="value" id="statPotentialRating">—</div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Monthly Impact</label>
+                        <div class="value" id="statMonthlyImpact">—</div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Annual Impact</label>
+                        <div class="value" id="statAnnualImpact">—</div>
+                    </div>
+                </div>
+
+                <div id="resultsContainer" class="results-container"></div>
+            </div>
+        </div>
+
+        <!-- Detailed Results -->
+        <div class="card results-container" id="detailedResults"></div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const folderInput = document.getElementById('folderInput');
+        const fileList = document.getElementById('fileList');
+        const processBtn = document.getElementById('processBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const testBtn = document.getElementById('testBtn');
+        const uploadStatus = document.getElementById('uploadStatus');
+
+        let selectedFiles = [];
+
+        // Upload area interactions - show folder/file selection
+        uploadArea.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Try to use folder picker on click
+            if (folderInput && folderInput.click) {
+                folderInput.click();
+            } else {
+                fileInput.click();
+            }
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+
+            // Try to handle folder drops using DataTransferItem API
+            const items = e.dataTransfer.items;
+            if (items && items.length > 0) {
+                const files = [];
+                for (let item of items) {
+                    if (item.kind === 'file') {
+                        const entry = item.webkitGetAsEntry();
+                        const itemFiles = await traverseFileTree(entry);
+                        files.push(...itemFiles);
+                    }
+                }
+                if (files.length > 0) {
+                    handleFiles(files);
+                    return;
+                }
+            }
+
+            // Fallback to regular file handling
+            handleFiles(e.dataTransfer.files);
+        });
+
+        async function traverseFileTree(entry, path = '') {
+            const files = [];
+
+            if (entry.isFile) {
+                const file = await new Promise((resolve, reject) => {
+                    entry.file(resolve, reject);
+                });
+                files.push(file);
+            } else if (entry.isDirectory) {
+                const reader = entry.createReader();
+                const entries = await new Promise((resolve, reject) => {
+                    reader.readEntries(resolve, reject);
+                });
+
+                for (let childEntry of entries) {
+                    const childFiles = await traverseFileTree(childEntry, path + entry.name + '/');
+                    files.push(...childFiles);
+                }
+            }
+
+            return files;
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        folderInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            selectedFiles = Array.from(files);
+            updateFileList();
+            processBtn.disabled = selectedFiles.length === 0;
+        }
+
+        function updateFileList() {
+            fileList.innerHTML = '';
+
+            if (selectedFiles.length > 10) {
+                // Show summary for large folders
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.style.fontWeight = 'bold';
+                item.innerHTML = `
+                    <span class="filename">📁 ${selectedFiles.length} files selected</span>
+                `;
+                fileList.appendChild(item);
+
+                // Show first 3 files as preview
+                for (let i = 0; i < Math.min(3, selectedFiles.length); i++) {
+                    const file = selectedFiles[i];
+                    const item = document.createElement('div');
+                    item.className = 'file-item';
+                    item.style.opacity = '0.7';
+                    item.innerHTML = `<span class="filename">  └─ ${file.name}</span>`;
+                    fileList.appendChild(item);
+                }
+
+                if (selectedFiles.length > 3) {
+                    const item = document.createElement('div');
+                    item.className = 'file-item';
+                    item.style.opacity = '0.7';
+                    item.innerHTML = `<span class="filename">  └─ ${selectedFiles.length - 3} more files...</span>`;
+                    fileList.appendChild(item);
+                }
+
+                // Add clear button at bottom
+                const clearItem = document.createElement('div');
+                clearItem.className = 'file-item';
+                clearItem.innerHTML = `<button class="remove" id="clearAllBtn">Clear All</button>`;
+                fileList.appendChild(clearItem);
+                document.getElementById('clearAllBtn').addEventListener('click', () => {
+                    selectedFiles = [];
+                    fileInput.value = '';
+                    folderInput.value = '';
+                    updateFileList();
+                    processBtn.disabled = true;
+                });
+            } else {
+                // Show individual files for small selections
+                selectedFiles.forEach((file, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'file-item';
+                    item.innerHTML = `
+                        <span class="filename">${file.name}</span>
+                        <button class="remove" data-index="${index}">Remove</button>
+                    `;
+                    fileList.appendChild(item);
+                });
+
+                document.querySelectorAll('.file-item .remove').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.dataset.index);
+                        selectedFiles.splice(index, 1);
+                        updateFileList();
+                        processBtn.disabled = selectedFiles.length === 0;
+                    });
+                });
+            }
+        }
+
+        clearBtn.addEventListener('click', () => {
+            selectedFiles = [];
+            fileInput.value = '';
+            folderInput.value = '';
+            updateFileList();
+            processBtn.disabled = true;
+            clearResults();
+        });
+
+        processBtn.addEventListener('click', uploadAndProcess);
+        testBtn.addEventListener('click', testBackend);
+
+        function showStatus(message, type) {
+            uploadStatus.textContent = message;
+            uploadStatus.className = `status ${type}`;
+            uploadStatus.style.display = 'flex';
+        }
+
+        function testBackend() {
+            testBtn.disabled = true;
+            showStatus('🧪 Testing backend connection...', 'loading');
+            const testResultsContainer = document.getElementById('testResults');
+            testResultsContainer.innerHTML = '';
+            testResultsContainer.classList.remove('show');
+
+            fetch('/api/test')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showStatus('✅ Backend test complete!', 'success');
+                        displayTestResults(data);
+                    } else {
+                        showStatus('❌ Backend error: ' + data.error, 'error');
+                    }
+                })
+                .catch(err => {
+                    showStatus('❌ Connection failed: ' + err.message, 'error');
+                })
+                .finally(() => {
+                    testBtn.disabled = false;
+                });
+        }
+
+        function displayTestResults(data) {
+            const testResultsContainer = document.getElementById('testResults');
+            const summary = data.summary;
+
+            // Build header
+            const header = document.createElement('div');
+            header.className = 'test-header';
+            header.innerHTML = `
+                <h2>🧪 Backend Test Results</h2>
+                <div class="test-summary">
+                    <div class="test-stat">
+                        <div class="label">Total Tests</div>
+                        <div class="value">${summary.total_tests}</div>
+                    </div>
+                    <div class="test-stat">
+                        <div class="label">Passed</div>
+                        <div class="value" style="color: #48bb78;">${summary.passed}</div>
+                    </div>
+                    <div class="test-stat">
+                        <div class="label">Failed</div>
+                        <div class="value" style="color: ${summary.failed > 0 ? '#f56565' : '#48bb78'};">${summary.failed}</div>
+                    </div>
+                    <div class="test-stat">
+                        <div class="label">Success Rate</div>
+                        <div class="value">${summary.success_rate}</div>
+                    </div>
+                </div>
+            `;
+            testResultsContainer.appendChild(header);
+
+            // Build test items
+            const testsList = document.createElement('div');
+            data.tests.forEach((test, index) => {
+                const testItem = document.createElement('div');
+                testItem.className = `test-item ${test.status}`;
+
+                let statusBadge = `<span class="test-item-status ${test.status}">${test.status === 'success' ? '✅ Success' : '❌ Error'}</span>`;
+
+                let headerHtml = `
+                    <div class="test-item-title">
+                        ${test.name}
+                        ${test.description ? `<div class="test-item-desc">${test.description}</div>` : ''}
+                    </div>
+                    ${statusBadge}
+                    <span class="test-toggle-icon">▼</span>
+                `;
+
+                let detailsHtml = '';
+
+                if (test.status === 'success') {
+                    const outputText = formatOutputEnglish(test.name, test.output);
+                    detailsHtml = `
+                        <div class="test-detail-row">
+                            <div class="test-detail-label">What We Tested</div>
+                            <div class="test-detail-value"><pre>${escapeHtml(test.input || 'N/A')}</pre></div>
+                        </div>
+                        <div class="test-detail-row">
+                            <div class="test-detail-label">What We Found</div>
+                            <div class="test-detail-value" style="background: #f0f7ff; color: #333; border-left: 3px solid #667eea; padding: 12px; font-family: inherit; font-size: inherit;">${outputText}</div>
+                        </div>
+                        <div class="test-detail-row">
+                            <div class="test-detail-label">Speed</div>
+                            <div class="test-detail-value">${test.duration || 'N/A'}</div>
+                        </div>
+                    `;
+                } else {
+                    detailsHtml = `
+                        <div class="test-detail-row">
+                            <div class="test-detail-label">Error</div>
+                            <div class="test-error">${escapeHtml(test.error || 'Unknown error')}</div>
+                        </div>
+                    `;
+                }
+
+                testItem.innerHTML = `
+                    <div class="test-item-header">
+                        ${headerHtml}
+                    </div>
+                    <div class="test-item-details">
+                        ${detailsHtml}
+                    </div>
+                `;
+
+                testItem.addEventListener('click', () => {
+                    testItem.classList.toggle('expanded');
+                });
+
+                testsList.appendChild(testItem);
+            });
+
+            testResultsContainer.appendChild(testsList);
+            testResultsContainer.classList.add('show');
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function formatOutputEnglish(toolName, output) {
+            if (!output) return 'No output received';
+
+            // CFR Lookup Tool
+            if (toolName.includes('CFR')) {
+                const o = output;
+                return `
+                    <strong>Condition:</strong> ${o.condition || 'Unknown'}<br>
+                    <strong>Diagnostic Code:</strong> ${o.diagnostic_code || 'N/A'}<br>
+                    <strong>Body System:</strong> ${o.body_system || 'N/A'}<br>
+                    <strong>Maximum Rating:</strong> ${o.max_rating || 'N/A'}%<br>
+                    <strong>VA Regulation:</strong> ${o.cfr_section || 'N/A'}<br>
+                    <br>
+                    <strong>Rating Scale:</strong><br>
+                    ${formatRatingCriteria(o.rating_criteria)}
+                    <br>
+                    <strong>Notes:</strong> ${o.notes || 'N/A'}
+                `;
+            }
+
+            // TDIU Check Tool
+            if (toolName.includes('TDIU')) {
+                const o = output;
+                const eligible = o.combined_rating >= 70 && o.highest_single_rating >= 40;
+                return `
+                    <strong>Eligibility:</strong> ${eligible ? '✅ YES - Qualifies for 100% Disability' : '❌ No - Does not qualify'}<br>
+                    <br>
+                    <strong>Your Ratings:</strong> ${o.individual_ratings.join('%, ') || 'N/A'}%<br>
+                    <strong>Highest Single Rating:</strong> ${o.highest_single_rating || 'N/A'}%<br>
+                    <strong>Combined Rating:</strong> ${o.combined_rating || 'N/A'}%<br>
+                    <br>
+                    <strong>Why:</strong><br>
+                    ${o.basis ? o.basis.map(b => '• ' + b).join('<br>') : 'See legal citation'}
+                    <br><br>
+                    <strong>Legal Basis:</strong> ${o.cfr_citation || 'N/A'}
+                `;
+            }
+
+            // VA Pay Lookup Tool
+            if (toolName.includes('Pay')) {
+                const o = output;
+                return `
+                    <strong>Current Rating:</strong> ${o.current_rating || 'N/A'}%<br>
+                    <strong>Potential Rating:</strong> ${o.potential_rating || 'N/A'}%<br>
+                    <br>
+                    <strong>Monthly Payment Impact:</strong><br>
+                    Current: $${formatCurrency(o.current_monthly_pay) || 'N/A'}<br>
+                    Potential: $${formatCurrency(o.potential_monthly_pay) || 'N/A'}<br>
+                    <strong>Monthly Increase: $${formatCurrency(o.monthly_increase) || 'N/A'}</strong><br>
+                    <br>
+                    <strong>Annual Impact: $${formatCurrency(o.annual_increase) || 'N/A'}</strong>
+                    ${o.annual_increase >= 10000 ? '<br><span style="color: #48bb78; font-weight: bold;">💰 Significant financial benefit</span>' : ''}
+                `;
+            }
+
+            // PACT Act Check Tool
+            if (toolName.includes('PACT')) {
+                const o = output;
+                return `
+                    <strong>Condition:</strong> ${o.condition || 'Unknown'}<br>
+                    <strong>Service Locations:</strong> ${o.service_locations ? o.service_locations.join(', ') : 'N/A'}<br>
+                    <strong>Service Era:</strong> ${o.service_era || 'N/A'}<br>
+                    <br>
+                    <strong>PACT Act Eligibility:</strong> ${o.eligible ? '✅ YES - Presumptive Condition' : '❌ No'}<br>
+                    <br>
+                    ${o.eligible ? `<strong>Benefit:</strong> Presumptive eligibility means the VA recognizes this condition as service-connected without needing additional medical evidence.<br><br><strong>What This Means:</strong> Your condition is automatically assumed to be caused by military service in the designated location.` : 'This condition is not on the PACT Act presumptive list.'}
+                `;
+            }
+
+            // Combined Rating Tool
+            if (toolName.includes('Combined')) {
+                const o = output;
+                return `
+                    <strong>Individual Ratings:</strong> ${o.individual_ratings ? o.individual_ratings.join('%, ') + '%' : 'N/A'}<br>
+                    <strong>Combined Rating (VA Formula):</strong> ${o.combined_rating || 'N/A'}%<br>
+                    <br>
+                    <strong>How VA Calculates This:</strong><br>
+                    The VA doesn't just add percentages. They use the "VA Combined Rating Table" which accounts for how conditions interact. This typically results in a lower combined rating than simple addition.<br>
+                    <br>
+                    <strong>Example:</strong> 70% + 30% doesn't equal 100%, but rather ${o.combined_rating}% using VA math.
+                `;
+            }
+
+            // Parser Agent
+            if (toolName.includes('Parser')) {
+                return `
+                    <strong>Status:</strong> ✅ Ready<br>
+                    <strong>Function:</strong> Extracts veteran information from VA documents<br>
+                    <strong>Capability:</strong> Reads Rating Decision Letters, Medical Documents, and Forms<br>
+                    <br>
+                    <strong>What It Does:</strong><br>
+                    • Identifies veteran name, claim number, service dates<br>
+                    • Extracts conditions and assigned ratings<br>
+                    • Identifies deployment locations and service era<br>
+                    • Captures decision dates and denial reasons
+                `;
+            }
+
+            // Auditor Agent
+            if (toolName.includes('Auditor')) {
+                return `
+                    <strong>Status:</strong> ✅ Ready<br>
+                    <strong>Function:</strong> Main AI auditor for VA claims<br>
+                    <strong>Powered By:</strong> Google ADK + Gemini AI<br>
+                    <strong>Tools Available:</strong> 8 specialized tools<br>
+                    <br>
+                    <strong>Capabilities:</strong><br>
+                    ✓ Detect under-rated conditions<br>
+                    ✓ Find PACT Act eligibility<br>
+                    ✓ Check TDIU qualification<br>
+                    ✓ Verify combined rating math<br>
+                    ✓ Calculate financial impact<br>
+                    ✓ Generate audit flags with explanations
+                `;
+            }
+
+            // Fallback to JSON
+            return `<pre>${escapeHtml(JSON.stringify(output, null, 2))}</pre>`;
+        }
+
+        function formatRatingCriteria(criteria) {
+            if (!criteria || typeof criteria !== 'object') return 'Not available';
+
+            return Object.keys(criteria)
+                .sort((a, b) => {
+                    const aNum = parseInt(a);
+                    const bNum = parseInt(b);
+                    return aNum - bNum;
+                })
+                .map(key => {
+                    const value = criteria[key];
+                    const percent = key === '0' ? 'No Rating (0%)' : key + '%';
+                    return `<strong>${percent}:</strong> ${value}<br>`;
+                })
+                .join('');
+        }
+
+        function formatCurrency(value) {
+            if (!value) return '0.00';
+            return parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function uploadAndProcess() {
+            if (selectedFiles.length === 0) return;
+
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append('files', file);
+            });
+
+            showStatus('⏳ Processing files...', 'loading');
+            processBtn.disabled = true;
+
+            fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        showStatus('❌ Error: ' + data.error, 'error');
+                        return;
+                    }
+
+                    showStatus('✅ Processing complete!', 'success');
+                    displayResults(data);
+                })
+                .catch(err => {
+                    showStatus('❌ Upload failed: ' + err.message, 'error');
+                    console.error(err);
+                })
+                .finally(() => {
+                    processBtn.disabled = false;
+                });
+        }
+
+        function displayResults(data) {
+            const auditResult = data.audit_result;
+            const parsedClaim = data.parsed_claim;
+
+            // Update quick stats
+            document.getElementById('statVeteranName').textContent =
+                auditResult.veteran_name || parsedClaim.veteran_name || '—';
+            document.getElementById('statClaimNumber').textContent =
+                auditResult.claim_number || parsedClaim.claim_number || '—';
+            document.getElementById('statCurrentRating').textContent =
+                (auditResult.current_combined_rating ? auditResult.current_combined_rating + '%' : '—');
+            document.getElementById('statPotentialRating').textContent =
+                (auditResult.corrected_combined_rating ? auditResult.corrected_combined_rating + '%' : '—');
+            const monthlyImpact = auditResult.monthly_impact_usd ||
+                (auditResult.potential_monthly_pay_usd && auditResult.current_monthly_pay_usd
+                    ? auditResult.potential_monthly_pay_usd - auditResult.current_monthly_pay_usd
+                    : null);
+            document.getElementById('statMonthlyImpact').textContent =
+                (monthlyImpact ? '$' + monthlyImpact.toFixed(2) : '—');
+            document.getElementById('statAnnualImpact').textContent =
+                (auditResult.annual_impact_usd ? '$' + auditResult.annual_impact_usd.toFixed(2) : '—');
+
+            // Display flags
+            const detailedResults = document.getElementById('detailedResults');
+            detailedResults.innerHTML = '';
+
+            if (auditResult.flags && auditResult.flags.length > 0) {
+                const flagsSection = document.createElement('div');
+                flagsSection.className = 'result-section';
+                flagsSection.innerHTML = `<h3>🚩 Audit Flags (${auditResult.flags.length})</h3>`;
+
+                auditResult.flags.forEach(flag => {
+                    const flagEl = document.createElement('div');
+                    flagEl.className = `flag ${flag.flag_type}`;
+                    flagEl.innerHTML = `
+                        <span class="flag-type">${flag.flag_type}</span>
+                        <div class="flag-content">
+                            <strong>${flag.condition_name}</strong>
+                            <p>${flag.explanation}</p>
+                            <div class="flag-details">
+                                ${flag.diagnostic_code ? `<div class="detail"><label>Code</label>${flag.diagnostic_code}</div>` : ''}
+                                ${flag.assigned_rating ? `<div class="detail"><label>Current</label>${flag.assigned_rating}%</div>` : ''}
+                                ${flag.eligible_rating ? `<div class="detail"><label>Eligible</label>${flag.eligible_rating}%</div>` : ''}
+                                ${flag.monthly_impact_usd ? `<div class="detail"><label>Monthly</label>$${flag.monthly_impact_usd.toFixed(2)}</div>` : ''}
+                                <div class="detail"><label>Confidence</label>${(flag.confidence * 100).toFixed(0)}%</div>
+                            </div>
+                        </div>
+                    `;
+                    flagsSection.appendChild(flagEl);
+                });
+
+                detailedResults.appendChild(flagsSection);
+            }
+
+            // Display VA Forms Generated
+            if (data.va_form_links && data.va_form_links.length > 0) {
+                const formsSection = document.createElement('div');
+                formsSection.className = 'result-section';
+                formsSection.innerHTML = `<h3>📄 VA Forms Generated (${data.va_form_links.length})</h3>`;
+
+                data.va_form_links.forEach(link => {
+                    const formEl = document.createElement('div');
+                    formEl.style.cssText = 'background: white; padding: 15px; margin-bottom: 10px; border-radius: 4px; border-left: 4px solid #28a745;';
+                    const fileName = link.filled_path.split('/').pop();
+                    const fieldsInfo = (link.fields_found != null)
+                        ? `<div style="color:#666;font-size:0.85em;margin-top:4px;">Fetched from VA API · ${link.fields_filled}/${link.fields_found} fields auto-filled by AI</div>`
+                        : '';
+                    const sourceLink = link.pdf_url
+                        ? `<div style="color:#888;font-size:0.8em;margin-top:2px;">Source: <a href="${link.pdf_url}" target="_blank" style="color:#5c6bc0;">${link.pdf_url}</a></div>`
+                        : '';
+                    formEl.innerHTML = `
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <div>
+                                <strong style="color: #28a745;">✓ VA Form ${link.form_number}</strong>
+                                <span style="color:#666;font-size:0.9em;margin-left:10px;">${fileName}</span>
+                                ${fieldsInfo}
+                                ${sourceLink}
+                            </div>
+                            <button onclick="downloadForm('${link.filled_path}')" style="padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; white-space:nowrap; margin-left:15px;">Download PDF</button>
+                        </div>
+                    `;
+                    formsSection.appendChild(formEl);
+                });
+
+                detailedResults.appendChild(formsSection);
+            }
+
+            // Display rule-based report if triggered
+            if (data.rule_based_triggered && data.rule_based_report) {
+                const ruleSection = document.createElement('div');
+                ruleSection.className = 'result-section';
+                ruleSection.innerHTML = `<h3>🎯 Rule-Based Audit Report</h3>`;
+                const reportEl = document.createElement('div');
+                reportEl.style.cssText = 'background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #ffc107; white-space: pre-wrap;';
+                reportEl.textContent = data.rule_based_report;
+                ruleSection.appendChild(reportEl);
+                detailedResults.appendChild(ruleSection);
+            }
+
+            // Parsed conditions
+            if (parsedClaim.conditions && parsedClaim.conditions.length > 0) {
+                const condSection = document.createElement('div');
+                condSection.className = 'result-section';
+                condSection.innerHTML = `<h3>🏥 Conditions (${parsedClaim.conditions.length})</h3>`;
+
+                parsedClaim.conditions.forEach(cond => {
+                    const condEl = document.createElement('div');
+                    condEl.style.cssText = 'background: white; padding: 10px; margin-bottom: 10px; border-radius: 4px; border-left: 3px solid #667eea;';
+                    condEl.innerHTML = `
+                        <strong>${cond.condition_name}</strong>
+                        ${cond.diagnostic_code ? `<br>Code: ${cond.diagnostic_code}` : ''}
+                        ${cond.assigned_rating ? `<br>Rating: ${cond.assigned_rating}%` : ''}
+                        ${cond.denial_reason ? `<br>Denial: ${cond.denial_reason}` : ''}
+                    `;
+                    condSection.appendChild(condEl);
+                });
+
+                detailedResults.appendChild(condSection);
+            }
+
+            // Raw JSON
+            const jsonSection = document.createElement('div');
+            jsonSection.className = 'result-section';
+            jsonSection.innerHTML = `<h3>📋 Raw Audit Result (JSON)</h3>`;
+            const jsonViewer = document.createElement('div');
+            jsonViewer.className = 'json-viewer';
+            jsonViewer.innerHTML = `<pre>${JSON.stringify(auditResult, null, 2)}</pre>`;
+            jsonSection.appendChild(jsonViewer);
+            detailedResults.appendChild(jsonSection);
+
+            // Show results
+            document.querySelectorAll('.results-container').forEach(el => {
+                el.style.display = 'block';
+            });
+        }
+
+        function downloadForm(filePath) {
+            const a = document.createElement('a');
+            a.href = `/api/download?path=${encodeURIComponent(filePath)}`;
+            a.download = filePath.split('/').pop();
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function clearResults() {
+            document.querySelectorAll('.results-container').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.summary-item .value').forEach(el => {
+                el.textContent = '—';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VA.gov | My eBenefits</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- VA API keys injected here — replace with your sandbox keys, never commit real keys -->
+  <meta name="va-api-key" content="ZLUUzRYuYpPjxUPTyhunsA7Ott172cq2" />
+  <meta name="va-forms-api-key" content="VgKI6h0JCbHe2f9eZwgxKmia9R5HKNfH" />
+</head>
+<body>
+
+  <!-- Official US government banner — matches real VA.gov styling -->
+  <div class="usa-banner">
+    <div class="usa-banner__inner">
+      <span class="usa-flag">🇺🇸</span>
+      <span>An official website of the United States government</span>
+    </div>
+  </div>
+
+  <!-- VA header / nav -->
+  <header class="va-header">
+    <div class="va-header__inner">
+      <div class="va-header__logo">
+        <span class="va-logo-text">VA</span>
+        <span class="va-logo-subtext">eBenefits</span>
+      </div>
+      <nav class="va-nav">
+        <a href="#">Disability</a>
+        <a href="#">Health Care</a>
+        <a href="#">Education</a>
+        <a href="#">Records</a>
+        <a href="#" class="va-nav__user">Signed in as <strong>James R. Wilson</strong></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="va-main">
+    <div class="va-main__inner">
+
+      <!-- Page heading -->
+      <div class="va-page-title">
+        <h1>Your VA Disability Benefits</h1>
+        <p class="va-subtitle">Account #796-04-3456 &nbsp;&bull;&nbsp; Last updated: February 14, 2026</p>
+      </div>
+
+      <!-- Submission notification banner — injected by va_api.js when a new appeal arrives -->
+      <div id="submission-notification"></div>
+
+      <!-- Pending Appeals section — populated by va_api.js polling -->
+      <div id="pending-appeals-section" style="display:none;" class="va-card" style="margin-bottom:1.5rem;">
+        <h2>📬 Filed Appeals <span id="appeals-count" class="appeals-count-badge"></span></h2>
+        <p class="va-subtitle-small">Appeals submitted via VetClaim AI — synced in real time</p>
+        <table class="va-table" id="appeals-table">
+          <thead>
+            <tr>
+              <th>Confirmation #</th>
+              <th>Veteran</th>
+              <th>Conditions</th>
+              <th>Submitted</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="appeals-tbody">
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Current rating summary banner -->
+      <div class="va-rating-banner">
+        <div class="va-rating-banner__item">
+          <span class="rating-number">30%</span>
+          <span class="rating-label">Combined Disability Rating</span>
+        </div>
+        <div class="va-rating-banner__divider"></div>
+        <div class="va-rating-banner__item">
+          <span class="pay-amount">$524.31</span>
+          <span class="pay-label">Monthly Payment</span>
+        </div>
+        <div class="va-rating-banner__divider"></div>
+        <div class="va-rating-banner__item">
+          <span class="status-badge">Decision Final</span>
+          <span class="pay-label">Decided Jan 9, 2026</span>
+        </div>
+      </div>
+
+      <!-- Main content grid -->
+      <div class="va-content-grid">
+
+        <!-- Rated conditions table -->
+        <section class="va-card">
+          <h2>Your Rated Conditions</h2>
+
+          <!-- Denied claims callout — this is the hook that starts the demo story -->
+          <div class="denied-callout">
+            <span class="denied-callout__icon">⚠️</span>
+            <div class="denied-callout__text">
+              <strong>2 of your conditions were denied.</strong>
+              You may be eligible to appeal these decisions.
+            </div>
+            <a href="#" class="va-btn va-btn--outline denied-callout__btn">Learn about your options</a>
+          </div>
+
+          <table class="va-table">
+            <thead>
+              <tr>
+                <th>Condition</th>
+                <th>Diag. Code</th>
+                <th>Decision</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Post-Traumatic Stress Disorder (PTSD)</td>
+                <td>9411</td>
+                <td class="decision-granted">Service Connected</td>
+                <td class="rating-cell">10%</td>
+              </tr>
+              <tr>
+                <td>Traumatic Brain Injury (TBI)</td>
+                <td>8045</td>
+                <td class="decision-granted">Service Connected</td>
+                <td class="rating-cell">10%</td>
+              </tr>
+              <tr>
+                <td>Lumbar Strain (Lower Back)</td>
+                <td>5237</td>
+                <td class="decision-granted">Service Connected</td>
+                <td class="rating-cell">20%</td>
+              </tr>
+              <tr>
+                <td>Tinnitus</td>
+                <td>6260</td>
+                <td class="decision-granted">Service Connected</td>
+                <td class="rating-cell">10%</td>
+              </tr>
+              <tr class="table-row--denied">
+                <td>Sleep Apnea</td>
+                <td>6847</td>
+                <td class="decision-denied">Denied — No Nexus</td>
+                <td class="rating-cell rating-cell--denied">0%</td>
+              </tr>
+              <tr class="table-row--denied">
+                <td>Respiratory Condition (Burn Pit Exposure)</td>
+                <td>6604</td>
+                <td class="decision-denied">Denied — No Nexus</td>
+                <td class="rating-cell rating-cell--denied">0%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="va-table-note">
+            Combined rating uses VA's whole-person method, not simple addition.
+            <a href="#">How VA calculates combined ratings</a>
+          </p>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="va-sidebar">
+
+          <div class="va-card va-card--compact">
+            <h3>Service Information</h3>
+            <dl class="va-dl">
+              <dt>Branch</dt><dd id="va-service-branch">U.S. Army</dd>
+              <dt>Service Dates</dt><dd>Mar 1991 – Nov 2003</dd>
+              <dt>Era</dt><dd>Gulf War / Post-9/11</dd>
+              <dt>Deployments</dt><dd>Iraq (OIF) 2003, Kuwait 1991</dd>
+              <dt>Discharge</dt><dd>Honorable</dd>
+            </dl>
+          </div>
+
+          <div class="va-card va-card--compact va-card--alert">
+            <h3>⚠️ Appeal Deadline</h3>
+            <p>You have <strong>1 year</strong> from your decision date to file a Notice of Disagreement.</p>
+            <p class="va-deadline">Deadline: <strong>January 9, 2027</strong></p>
+            <a href="#" class="va-btn va-btn--outline">Learn about appeal options</a>
+          </div>
+
+          <div class="va-card va-card--compact">
+            <h3>Claim Documents</h3>
+            <ul class="va-doc-list">
+              <li><a href="/testcase/james_millner/james_miller_decision_letter.pdf" target="_blank">📄 Rating Decision Letter (Nov 15, 2023)</a></li>
+              <li><a href="/testcase/james_millner/C&amp;P_Exam_Combined_DBQs.pdf" target="_blank">📄 C&amp;P Exam — Combined DBQs (Aug 14, 2023)</a></li>
+              <li><a href="/testcase/james_millner/james_miller_personal_statement.pdf" target="_blank">📄 DBQ — PTSD Review (Aug 14, 2023)</a></li>
+              <li><a href="/testcase/james_millner/james_miller_ear_dbq.pdf" target="_blank">📄 DBQ — Ear Conditions / Vestibular (2023)</a></li>
+              <li><a href="/testcase/james_millner/DBQ_ALS_James_Milner_SAMPLE.pdf" target="_blank">📄 DBQ — ALS (2023)</a></li>
+            </ul>
+            <button id="download-all-docs" class="va-btn va-btn--outline va-btn--download-all">
+              ⬇ Download All Documents
+            </button>
+          </div>
+
+        </aside>
+      </div>
+
+    </div><!-- end va-main__inner -->
+  </main>
+
+  <footer class="va-footer">
+    <p>Department of Veterans Affairs &nbsp;|&nbsp; <a href="#">Privacy</a> &nbsp;|&nbsp; <a href="#">Accessibility</a> &nbsp;|&nbsp; <a href="#">Contact Us</a></p>
+    <p class="va-footer__disclaimer">⚠️ Demo mock portal — VetClaim AI HackUSF 2026. Not affiliated with the U.S. Department of Veterans Affairs.</p>
+  </footer>
+
+  <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="profiles.js"></script>
+  <script src="va_api.js"></script>
+</body>
+</html>
