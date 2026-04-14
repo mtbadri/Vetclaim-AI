@@ -2,6 +2,13 @@ import { useState } from 'react'
 
 const NAV_BLUE = '#1B3A6B'
 
+function normalizePhone(raw) {
+  const digits = raw.replace(/\D/g, '')
+  if (digits.length === 10) return `+1${digits}`
+  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`
+  return null
+}
+
 export default function CallingAgentPage({ onBack }) {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
@@ -9,14 +16,22 @@ export default function CallingAgentPage({ onBack }) {
   const [fetchingTranscript, setFetchingTranscript] = useState(false)
   const [callInitiated, setCallInitiated] = useState(false)
   const [transcriptOpen, setTranscriptOpen] = useState(false)
+  const [phoneInput, setPhoneInput] = useState('')
+
+  const e164 = normalizePhone(phoneInput)
 
   const handleCall = async () => {
+    if (!e164) return
     setStatus('loading')
     setErrorMsg('')
     setCallData(null)
 
     try {
-      const res = await fetch('/api/call-va', { method: 'POST' })
+      const res = await fetch('/api/call-va', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone_number: e164 }),
+      })
       const data = await res.json()
 
       if (!res.ok || data.status === 'error') {
@@ -89,6 +104,31 @@ export default function CallingAgentPage({ onBack }) {
           </p>
         </div>
 
+        {/* Phone number input */}
+        <div className="fade-in-up mb-6">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Your Phone Number
+          </label>
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-500 font-medium select-none">
+              +1
+            </span>
+            <input
+              type="tel"
+              placeholder="(555) 867-5309"
+              value={phoneInput}
+              onChange={e => setPhoneInput(e.target.value)}
+              className="flex-1 px-3 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-200 transition"
+            />
+          </div>
+          {phoneInput && !e164 && (
+            <p className="text-xs text-red-500 mt-1">Enter a valid 10-digit US number</p>
+          )}
+          {e164 && (
+            <p className="text-xs text-green-600 mt-1">Vapi will call {e164}</p>
+          )}
+        </div>
+
         {/* Consent notice */}
         <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg flex gap-3">
           <svg className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -120,10 +160,10 @@ export default function CallingAgentPage({ onBack }) {
         <div className="fade-in-up-2">
           <button
             onClick={handleCall}
-            disabled={status === 'loading'}
+            disabled={status === 'loading' || !e164}
             className="w-full py-3 rounded-lg font-semibold text-sm text-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: NAV_BLUE }}
-            onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.background = '#0F2444' }}
+            onMouseEnter={e => { if (status !== 'loading' && e164) e.currentTarget.style.background = '#0F2444' }}
             onMouseLeave={e => { e.currentTarget.style.background = NAV_BLUE }}
           >
             {status === 'loading' ? (

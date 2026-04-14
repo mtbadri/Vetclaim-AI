@@ -324,6 +324,11 @@ def submit_appeal():
 # ---------------------------------------------------------------------------
 @app.route('/api/call-va', methods=['POST'])
 def call_va_rep():
+    body = request.get_json(force=True, silent=True) or {}
+    phone_number = body.get("phone_number", "").strip()
+    if not phone_number:
+        return jsonify({"error": "phone_number is required"}), 400
+
     url = "https://api.vapi.ai/call/phone"
     headers = {
         "Authorization": f"Bearer {os.getenv('VAPI_PRIVATE_KEY')}",
@@ -332,7 +337,7 @@ def call_va_rep():
     payload = {
         "assistantId": "efe9791d-f257-40d3-8760-715fdeb669f0",
         "phoneNumberId": "4882efe5-5767-44ef-bb42-4aaf3752dda4",
-        "customer": {"number": "+10000000000"}, # Placeholder number
+        "customer": {"number": phone_number},
         "assistantOverrides": {
             "variableValues": {"veteran_name": "Demo Veteran"}
         }
