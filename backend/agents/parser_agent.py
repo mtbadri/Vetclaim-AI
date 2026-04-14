@@ -58,11 +58,21 @@ class VAClaimParser:
         parts: list[str] = []
         page_chars: list[int] = []
 
-        with pdfplumber.open(pdf_path) as pdf:
-            for page in pdf.pages:
-                t = page.extract_text() or ""
-                parts.append(t)
-                page_chars.append(len(t))
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    t = page.extract_text() or ""
+                    parts.append(t)
+                    page_chars.append(len(t))
+        except Exception as exc:
+            # Unreadable / malformed PDF — return empty text so the pipeline continues
+            return {
+                "filename": pdf_path.name,
+                "path": str(pdf_path.resolve()),
+                "page_count": 0,
+                "text": f"[Could not extract text from {pdf_path.name}: {exc}]",
+                "chars_per_page": [],
+            }
 
         full = "\n\n".join(parts)
         return {
@@ -81,11 +91,20 @@ class VAClaimParser:
         layout_parts: list[str] = []
         page_layout_chars: list[int] = []
 
-        with pdfplumber.open(pdf_path) as pdf:
-            for page in pdf.pages:
-                block = page.extract_text(layout=True) or ""
-                layout_parts.append(block)
-                page_layout_chars.append(len(block))
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    block = page.extract_text(layout=True) or ""
+                    layout_parts.append(block)
+                    page_layout_chars.append(len(block))
+        except Exception as exc:
+            return {
+                "filename": pdf_path.name,
+                "path": str(pdf_path.resolve()),
+                "page_count": 0,
+                "layout_text": f"[Could not extract layout from {pdf_path.name}: {exc}]",
+                "layout_chars_per_page": [],
+            }
 
         layout_full = "\n\n".join(layout_parts)
         return {
