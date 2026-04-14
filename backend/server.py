@@ -345,7 +345,11 @@ def call_va_rep():
     }
     try:
         response = requests.post(url, json=payload, headers=headers)
-        return jsonify({"status": "success", "data": response.json()}), 200
+        data = response.json()
+        if not response.ok:
+            msg = data.get("message") or data.get("error") or f"Vapi error {response.status_code}"
+            return jsonify({"status": "error", "message": msg}), 502
+        return jsonify({"status": "success", "data": data}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
