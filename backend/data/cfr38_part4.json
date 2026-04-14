@@ -1,0 +1,393 @@
+{
+  "9411": {
+    "condition": "PTSD",
+    "cfr_section": "38 CFR Part 4, §4.130, DC 9411",
+    "body_system": "Mental Disorders",
+    "rating_criteria": {
+      "0": "A mental condition has been formally diagnosed, but symptoms are not severe enough either to interfere with occupational and social functioning or to require continuous medication.",
+      "10": "Occupational and social impairment due to mild or transient symptoms which decrease work efficiency and ability to perform occupational tasks only during periods of significant stress, or; symptoms controlled by continuous medication.",
+      "30": "Occupational and social impairment with occasional decrease in work efficiency and intermittent periods of inability to perform occupational tasks (although generally functioning satisfactorily, with routine behavior, self-care, and conversation normal), due to such symptoms as: depressed mood, anxiety, suspiciousness, panic attacks (weekly or less often), chronic sleep impairment, mild memory loss.",
+      "50": "Occupational and social impairment with reduced reliability and productivity due to such symptoms as: flattened affect; circumstantial, circumlocutory, or stereotyped speech; panic attacks more than once a week; difficulty in understanding complex commands; impairment of short- and long-term memory; impaired judgment; impaired abstract thinking; disturbances of motivation and mood; difficulty in establishing and maintaining effective work and social relationships.",
+      "70": "Occupational and social impairment, with deficiencies in most areas, such as work, school, family relations, judgment, thinking, or mood, due to such symptoms as: suicidal ideation; obsessional rituals which interfere with routine activities; speech intermittently illogical, obscure, or irrelevant; near-continuous panic or depression affecting the ability to function independently, appropriately and effectively; impaired impulse control (such as unprovoked irritability with periods of violence); spatial disorientation; neglect of personal appearance and hygiene; difficulty in adapting to stressful circumstances; inability to establish and maintain effective relationships.",
+      "100": "Total occupational and social impairment, due to such symptoms as: gross impairment in thought processes or communication; persistent delusions or hallucinations; grossly inappropriate behavior; persistent danger of hurting self or others; intermittent inability to perform activities of daily living (including maintenance of minimal personal hygiene); disorientation to time or place; memory loss for names of close relatives, own occupation, or own name."
+    },
+    "max_rating": 100,
+    "notes": "General rating formula for mental disorders applies. 100% requires total impairment."
+  },
+  "8045": {
+    "condition": "Traumatic Brain Injury (TBI)",
+    "cfr_section": "38 CFR Part 4, §4.124a, DC 8045",
+    "body_system": "Neurological",
+    "rating_criteria": {
+      "0": "No objective neurological findings; no subjective complaints.",
+      "10": "Subjective symptoms without objective neurological findings: headaches, dizziness, insomnia, fatigue, or cognitive difficulties that do not significantly interfere with occupational or social functioning.",
+      "40": "Cognitive impairment with objective neurological findings: moderate memory, attention, concentration, or executive function deficits; or with behavioral or emotional impairment (e.g., irritability, anxiety, depression) that impacts daily functioning. Also: vestibular dysfunction causing dizziness, balance problems.",
+      "70": "Severe cognitive impairment: severe loss of memory, attention, or executive function; marked behavioral disturbance; inability to perform complex tasks.",
+      "100": "Total cognitive impairment: inability to perform activities of daily living without assistance; total occupational impairment."
+    },
+    "max_rating": 100,
+    "notes": "TBI residuals are rated separately by system affected. Cognitive impairment rated under §4.130. Vestibular symptoms may be rated separately under DC 6204. Evaluate ALL residuals."
+  },
+  "6260": {
+    "condition": "Tinnitus",
+    "cfr_section": "38 CFR Part 4, §4.87, DC 6260",
+    "body_system": "Ear",
+    "rating_criteria": {
+      "10": "Recurrent tinnitus."
+    },
+    "max_rating": 10,
+    "notes": "Single rating of 10% regardless of bilateral or unilateral. Cannot be rated higher than 10%."
+  },
+  "6100": {
+    "condition": "Hearing Loss",
+    "cfr_section": "38 CFR Part 4, §4.85-4.86, DC 6100",
+    "body_system": "Ear",
+    "rating_criteria": {
+      "0": "Hearing within normal limits or slight hearing loss (Roman numeral combinations I-I through II-I on Table VI).",
+      "10": "Moderate hearing loss (combinations such as III-I, II-II, I-III).",
+      "30": "Moderately severe hearing loss (combinations such as IV-II, III-III, II-IV).",
+      "50": "Severe hearing loss (combinations such as V-III, IV-IV, III-V).",
+      "80": "Profound hearing loss (combinations such as VI-IV, V-V, IV-VI).",
+      "100": "Total deafness (combination VI-VI or greater)."
+    },
+    "max_rating": 100,
+    "notes": "Rated using puretone audiometry and Maryland CNC speech discrimination test. Use Table VI and VIa for Roman numeral combinations."
+  },
+  "5237": {
+    "condition": "Lumbosacral Strain / Low Back (Thoracolumbar)",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5237",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "Forward flexion of the thoracolumbar spine greater than 60 degrees; or, combined range of motion of the thoracolumbar spine greater than 120 degrees; or, muscle spasm, guarding, or localized tenderness not resulting in abnormal gait or abnormal spinal contour; or, vertebral body fracture with loss of 50 percent or more of height.",
+      "10": "Forward flexion of the thoracolumbar spine greater than 60 degrees but not greater than 85 degrees; or, combined range of motion of the thoracolumbar spine greater than 120 degrees but not greater than 235 degrees; or, muscle spasm, guarding, or localized tenderness not resulting in abnormal gait or abnormal spinal contour; or, vertebral body fracture with loss of 50 percent or more of height.",
+      "20": "Forward flexion of the thoracolumbar spine greater than 30 degrees but not greater than 60 degrees; or, the combined range of motion of the thoracolumbar spine not greater than 120 degrees; or, muscle spasm or guarding severe enough to result in an abnormal gait or abnormal spinal contour such as scoliosis, reversed lordosis, or abnormal kyphosis.",
+      "40": "Forward flexion of the thoracolumbar spine 30 degrees or less; or, favorable ankylosis of the entire thoracolumbar spine.",
+      "50": "Unfavorable ankylosis of the entire thoracolumbar spine.",
+      "100": "Unfavorable ankylosis of the entire spine."
+    },
+    "max_rating": 100,
+    "notes": "Rate based on range of motion (ROM). Always consider intervertebral disc syndrome separately under DC 5243. Radiculopathy rated separately."
+  },
+  "5242": {
+    "condition": "Degenerative Arthritis of the Spine (Lumbar)",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5242",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "No limitation of motion or limitation not compensable under the appropriate diagnostic code.",
+      "10": "Forward flexion greater than 60 degrees or combined ROM > 120 degrees.",
+      "20": "Forward flexion 30-60 degrees or combined ROM ≤ 120 degrees.",
+      "40": "Forward flexion 30 degrees or less; or favorable ankylosis.",
+      "50": "Unfavorable ankylosis of entire thoracolumbar spine.",
+      "100": "Unfavorable ankylosis of entire spine."
+    },
+    "max_rating": 100,
+    "notes": "Same schedule as DC 5237. Rate under whichever code is most favorable."
+  },
+  "5260": {
+    "condition": "Knee - Limitation of Flexion",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5260",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "Flexion limited to 60 degrees or more.",
+      "10": "Flexion limited to 60 degrees.",
+      "20": "Flexion limited to 45 degrees.",
+      "30": "Flexion limited to 30 degrees.",
+      "40": "Flexion limited to 15 degrees."
+    },
+    "max_rating": 40,
+    "notes": "Rate by actual goniometric measurement. Consider also DC 5261 for extension limitation."
+  },
+  "5261": {
+    "condition": "Knee - Limitation of Extension",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5261",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "Extension limited to 5 degrees or less.",
+      "10": "Extension limited to 10 degrees.",
+      "20": "Extension limited to 15 degrees.",
+      "30": "Extension limited to 20 degrees.",
+      "40": "Extension limited to 30 degrees.",
+      "50": "Extension limited to 45 degrees."
+    },
+    "max_rating": 50,
+    "notes": "Do not combine with DC 5260 for same knee without pyramiding analysis."
+  },
+  "8100": {
+    "condition": "Migraines (Migraine Headaches)",
+    "cfr_section": "38 CFR Part 4, §4.124a, DC 8100",
+    "body_system": "Neurological",
+    "rating_criteria": {
+      "0": "Less frequent attacks.",
+      "10": "Characteristic prostrating attacks averaging one in 2 months over last several months.",
+      "30": "Characteristic prostrating attacks occurring on an average once a month over last several months.",
+      "50": "Very frequent completely prostrating and prolonged attacks productive of severe economic inadaptability."
+    },
+    "max_rating": 50,
+    "notes": "Key word: 'prostrating' - attacks must be prostrating to qualify for 10%+. Frequency is the rating driver."
+  },
+  "6847": {
+    "condition": "Sleep Apnea",
+    "cfr_section": "38 CFR Part 4, §4.97, DC 6847",
+    "body_system": "Respiratory",
+    "rating_criteria": {
+      "0": "Asymptomatic but with documented sleep disorder breathing.",
+      "30": "Persistent daytime hypersomnolence.",
+      "50": "Requires use of breathing assistance device such as CPAP machine.",
+      "100": "Chronic respiratory failure with carbon dioxide retention or cor pulmonale, or; requires tracheostomy."
+    },
+    "max_rating": 100,
+    "notes": "CPAP requirement = automatic 50%. Rated on symptom severity and treatment required."
+  },
+  "7346": {
+    "condition": "Hiatal Hernia / GERD",
+    "cfr_section": "38 CFR Part 4, §4.114, DC 7346",
+    "body_system": "Digestive",
+    "rating_criteria": {
+      "10": "Two or more of the symptoms for the 30 percent evaluation of less severity.",
+      "30": "Persistently recurrent epigastric distress with dysphagia, pyrosis, and regurgitation, accompanied by substernal or arm or shoulder pain, productive of considerable impairment of health.",
+      "60": "Symptoms of pain, vomiting, material weight loss and hematemesis or melena with moderate anemia; or other symptom combinations productive of severe impairment of health."
+    },
+    "max_rating": 60,
+    "notes": "GERD typically rated under Hiatal Hernia code. Document frequency, severity, and response to treatment."
+  },
+  "6513": {
+    "condition": "Sinusitis (Pansinusitis)",
+    "cfr_section": "38 CFR Part 4, §4.97, DC 6513",
+    "body_system": "Respiratory",
+    "rating_criteria": {
+      "10": "One or two incapacitating episodes per year of sinusitis requiring prolonged antibiotic treatment, or; three to six non-incapacitating episodes per year of sinusitis characterized by headaches, pain, and purulent discharge or crusting.",
+      "30": "Three or more incapacitating episodes per year of sinusitis requiring prolonged antibiotic treatment, or; more than six non-incapacitating episodes per year of sinusitis characterized by headaches, pain, and purulent discharge or crusting.",
+      "50": "Near constant sinusitis characterized by headaches, pain and tenderness of affected sinus, and purulent discharge or crusting after repeated surgeries."
+    },
+    "max_rating": 50,
+    "notes": "Incapacitating episode = requires bed rest and treatment by physician."
+  },
+  "8520": {
+    "condition": "Radiculopathy - Sciatic Nerve (Lower Extremity)",
+    "cfr_section": "38 CFR Part 4, §4.124a, DC 8520",
+    "body_system": "Neurological",
+    "rating_criteria": {
+      "10": "Mild incomplete paralysis.",
+      "20": "Moderate incomplete paralysis.",
+      "40": "Moderately severe incomplete paralysis.",
+      "60": "Severe incomplete paralysis, with marked muscular atrophy.",
+      "80": "Complete paralysis: foot drop and slight peroneals, all toe muscles paralysis, no active movement possible of muscles below the knee, flexion of knee weakened or (very rarely) lost."
+    },
+    "max_rating": 80,
+    "notes": "Rated separately from spine condition. Dominant vs. non-dominant extremity: non-dominant rated one level lower. Upper extremity radiculopathy uses DC 8510-8515."
+  },
+  "5276": {
+    "condition": "Flatfoot (Pes Planus) / Plantar Fasciitis",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5276",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "Mild: symptoms relieved by built-up shoe or arch support.",
+      "10": "Moderate: weight-bearing line over or medial to great toe, inward bowing of the Achilles tendon, pain on manipulation and use of the feet, bilateral.",
+      "20": "Severe: marked pronation, extreme tenderness of plantar surfaces of the feet, marked inward displacement and severe spasm of the tendo achillis on manipulation, not improved by orthopedic shoes or appliances, bilateral.",
+      "30": "Pronounced: marked pronation, extreme tenderness of plantar surfaces of the feet, marked inward displacement and severe spasm of the tendo achillis on manipulation, not improved by orthopedic shoes or appliances, unilateral."
+    },
+    "max_rating": 30,
+    "notes": "Bilateral is rated higher than unilateral. Document whether orthotic devices provide relief."
+  },
+  "5201": {
+    "condition": "Shoulder - Limitation of Motion",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5201",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "20": "Arm limited to shoulder level (180-degree abduction limited to 90 degrees).",
+      "30": "Arm limited to midway between side and shoulder level (abduction to 45 degrees); dominant.",
+      "40": "Arm limited to side (abduction < 25 degrees); dominant."
+    },
+    "max_rating": 40,
+    "notes": "Dominant arm rated one step higher. Consider rotator cuff tear under DC 5203."
+  },
+  "5271": {
+    "condition": "Ankle - Limitation of Motion",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5271",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "0": "Dorsiflexion 0-10 degrees or plantar flexion 0-10 degrees beyond normal.",
+      "10": "Moderate limitation of motion.",
+      "20": "Marked limitation of motion."
+    },
+    "max_rating": 20,
+    "notes": "Normal dorsiflexion is 20 degrees, plantar flexion 45 degrees."
+  },
+  "7913": {
+    "condition": "Diabetes Mellitus",
+    "cfr_section": "38 CFR Part 4, §4.119, DC 7913",
+    "body_system": "Endocrine",
+    "rating_criteria": {
+      "10": "Manageable by restricted diet only.",
+      "20": "Requiring insulin and restricted diet, or; oral hypoglycemic agent and restricted diet.",
+      "40": "Requiring insulin, restricted diet, and regulation of activities.",
+      "60": "Requiring insulin, restricted diet, and regulation of activities with episodes of ketoacidosis or hypoglycemic reactions requiring one or two hospitalizations per year or twice a month visits to a diabetic care provider, plus complications that would not be compensable if separately evaluated.",
+      "100": "Requiring more than one daily injection of insulin, restricted diet, and regulation of activities (avoidance of strenuous occupational and recreational activities) with episodes of ketoacidosis or hypoglycemic reactions requiring one or two hospitalizations per year or twice a month visits to a diabetic care provider, plus either progressive loss of weight and strength or complications that would be compensable if separately evaluated."
+    },
+    "max_rating": 100,
+    "notes": "Rate secondary conditions (neuropathy, retinopathy, nephropathy) separately. PACT Act presumptive for Agent Orange exposure."
+  },
+  "7101": {
+    "condition": "Hypertension",
+    "cfr_section": "38 CFR Part 4, §4.104, DC 7101",
+    "body_system": "Cardiovascular",
+    "rating_criteria": {
+      "10": "Diastolic pressure predominantly 100 or more; or; systolic pressure predominantly 160 or more; or; minimum evaluation for an individual with a history of diastolic pressure predominantly 100 or more who requires continuous medication for control.",
+      "20": "Diastolic pressure predominantly 110 or more, or; systolic pressure predominantly 200 or more.",
+      "40": "Diastolic pressure predominantly 120 or more.",
+      "60": "Diastolic pressure predominantly 130 or more."
+    },
+    "max_rating": 60,
+    "notes": "Must be based on readings from multiple examinations, not a single measurement. Minimum 10% for controlled hypertension requiring medication."
+  },
+  "6602": {
+    "condition": "Asthma (Bronchial)",
+    "cfr_section": "38 CFR Part 4, §4.97, DC 6602",
+    "body_system": "Respiratory",
+    "rating_criteria": {
+      "10": "FEV-1 of 71- to 80-percent predicted, or; FEV-1/FVC of 71 to 80 percent, or; intermittent inhalational or oral bronchodilator therapy.",
+      "30": "FEV-1 of 56- to 70-percent predicted, or; FEV-1/FVC of 56 to 70 percent, or; daily inhalational or oral bronchodilator therapy, or; inhalational anti-inflammatory medication.",
+      "60": "FEV-1 of 40- to 55-percent predicted, or; FEV-1/FVC of 40 to 55 percent, or; at least monthly visits to a physician for required care of exacerbations, or; intermittent (at least three per year) courses of systemic (oral or parenteral) corticosteroids.",
+      "100": "FEV-1 less than 40-percent predicted, or; FEV-1/FVC less than 40 percent, or; more than one attack per week with episodes of respiratory failure, or; requires daily systemic (oral or parenteral) corticosteroids or inhalational anti-inflammatory medication."
+    },
+    "max_rating": 100,
+    "notes": "Pulmonary function tests (PFTs) are required. PACT Act presumptive for burn pit exposure."
+  },
+  "6522": {
+    "condition": "Allergic Rhinitis",
+    "cfr_section": "38 CFR Part 4, §4.97, DC 6522",
+    "body_system": "Respiratory",
+    "rating_criteria": {
+      "10": "Without polyps, but with greater than 50-percent obstruction of nasal passage on both sides or complete obstruction on one side.",
+      "30": "With polyps."
+    },
+    "max_rating": 30,
+    "notes": "Document presence/absence of polyps. Obstruction must be confirmed on exam."
+  },
+  "7806": {
+    "condition": "Dermatitis / Eczema",
+    "cfr_section": "38 CFR Part 4, §4.118, DC 7806",
+    "body_system": "Skin",
+    "rating_criteria": {
+      "0": "Covered by medication; no limitation of activities.",
+      "10": "At least one of the following and no more than 5 percent of the entire body or 5 percent of exposed areas affected; or, intermittent systemic therapy such as corticosteroids or other immunosuppressive drugs required for a total duration of less than six weeks during the past 12-month period.",
+      "30": "20 to 40 percent of the entire body or 20 to 40 percent of exposed areas affected; or, systemic therapy such as corticosteroids or other immunosuppressive drugs required for a total duration of six weeks or more, but not constantly, during the past 12-month period.",
+      "60": "More than 40 percent of the entire body or more than 40 percent of exposed areas affected; or, constant or near-constant systemic therapy such as corticosteroids or other immunosuppressive drugs required during the past 12-month period."
+    },
+    "max_rating": 60,
+    "notes": "Rate based on body surface area (BSA) affected and treatment required."
+  },
+  "9434": {
+    "condition": "Major Depressive Disorder (Depression)",
+    "cfr_section": "38 CFR Part 4, §4.130, DC 9434",
+    "body_system": "Mental Disorders",
+    "rating_criteria": {
+      "0": "Diagnosed but symptoms not severe enough to interfere with occupational and social functioning or to require continuous medication.",
+      "10": "Occupational and social impairment due to mild or transient symptoms which decrease work efficiency and ability to perform occupational tasks only during periods of significant stress, or; symptoms controlled by continuous medication.",
+      "30": "Occupational and social impairment with occasional decrease in work efficiency and intermittent periods of inability to perform occupational tasks.",
+      "50": "Occupational and social impairment with reduced reliability and productivity.",
+      "70": "Occupational and social impairment, with deficiencies in most areas, such as work, school, family relations, judgment, thinking, or mood.",
+      "100": "Total occupational and social impairment."
+    },
+    "max_rating": 100,
+    "notes": "General mental disorders rating formula applies. Same schedule as PTSD."
+  },
+  "7800": {
+    "condition": "Scars - Disfigurement of Head, Face, or Neck",
+    "cfr_section": "38 CFR Part 4, §4.118, DC 7800",
+    "body_system": "Skin",
+    "rating_criteria": {
+      "10": "One characteristic of disfigurement.",
+      "30": "Two or three characteristics of disfigurement.",
+      "50": "Four or five characteristics of disfigurement.",
+      "80": "Six or more characteristics of disfigurement."
+    },
+    "max_rating": 80,
+    "notes": "Characteristics: scar tissue replacing normal skin, adherent/depressed scar, pigment changes, abnormal texture, irregular contour, limitation of function."
+  },
+  "7804": {
+    "condition": "Scars - Unstable or Painful",
+    "cfr_section": "38 CFR Part 4, §4.118, DC 7804",
+    "body_system": "Skin",
+    "rating_criteria": {
+      "10": "One or two scars that are unstable or painful.",
+      "20": "Three or four scars that are unstable or painful.",
+      "30": "Five or more scars that are unstable or painful."
+    },
+    "max_rating": 30,
+    "notes": "Unstable = breaks down with or without trauma. Can be combined with DC 7800 without pyramiding."
+  },
+  "6204": {
+    "condition": "Peripheral Vestibular Disorders",
+    "cfr_section": "38 CFR Part 4, §4.87, DC 6204",
+    "body_system": "Ear",
+    "rating_criteria": {
+      "10": "Occasional dizziness.",
+      "30": "Occasional dizziness and staggering.",
+      "100": "Frequent attacks of vestibular disturbance with cerebellar gait."
+    },
+    "max_rating": 100,
+    "notes": "Key symptoms: dizziness, staggering, unsteady gait. Rated separately from hearing loss. Important TBI residual."
+  },
+  "5003": {
+    "condition": "Degenerative Arthritis",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5003",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "10": "With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups, with occasional incapacitating exacerbations.",
+      "20": "With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups."
+    },
+    "max_rating": 20,
+    "notes": "Rate separately if limitation of motion is more beneficial. DC 5003 is a fallback when ROM codes don't apply."
+  },
+  "5055": {
+    "condition": "Knee Replacement (Prosthesis)",
+    "cfr_section": "38 CFR Part 4, §4.71a, DC 5055",
+    "body_system": "Musculoskeletal",
+    "rating_criteria": {
+      "30": "After 1 year, residual weakness, pain, or limitation of motion requires continuous medication.",
+      "60": "Intermediate rating for chronic residuals.",
+      "100": "For one year following implantation of prosthesis."
+    },
+    "max_rating": 100,
+    "notes": "Automatic 100% for 1 year post-surgery. Then rate on residuals."
+  },
+  "6310": {
+    "condition": "Chronic Laryngitis",
+    "cfr_section": "38 CFR Part 4, §4.97, DC 6310",
+    "body_system": "Respiratory",
+    "rating_criteria": {
+      "10": "Hoarseness with thickening or nodules of cords, polyps, submucous infiltration, or stenosis."
+    },
+    "max_rating": 30,
+    "notes": "Consider separately from rhinitis and sinusitis."
+  },
+  "7528": {
+    "condition": "Malignant Neoplasms of Genitourinary System",
+    "cfr_section": "38 CFR Part 4, §4.119, DC 7528",
+    "body_system": "Genitourinary",
+    "rating_criteria": {
+      "100": "During active malignancy or treatment.",
+      "20": "After successful treatment - with minimal impairment.",
+      "40": "After treatment with moderate impairment.",
+      "60": "After treatment with severe impairment."
+    },
+    "max_rating": 100,
+    "notes": "100% during active cancer. Reevaluate 6 months post-treatment. PACT Act presumptive for many exposures."
+  },
+  "9305": {
+    "condition": "Vascular Dementia / TBI Cognitive Impairment",
+    "cfr_section": "38 CFR Part 4, §4.130, DC 9305",
+    "body_system": "Mental Disorders",
+    "rating_criteria": {
+      "0": "Symptoms not severe enough to interfere with occupational and social functioning.",
+      "10": "Mild symptoms controlled by medication or with mild social/occupational impact.",
+      "30": "Occasional decrease in work efficiency.",
+      "50": "Reduced reliability and productivity.",
+      "70": "Deficiencies in most areas of functioning.",
+      "100": "Total impairment."
+    },
+    "max_rating": 100,
+    "notes": "TBI vestibular/cognitive residuals may qualify here separately from DC 8045."
+  }
+}

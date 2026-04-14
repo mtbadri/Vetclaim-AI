@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "year": 2026,
+    "cola_adjustment": "2.5%",
+    "effective_date": "2026-12-01",
+    "source": "VA.gov - Disability Compensation Rates",
+    "note": "Monthly payment amounts in USD. Verify against official VA.gov rates."
+  },
+  "veteran_alone": {
+    "10": 179.90,
+    "20": 355.37,
+    "30": 550.86,
+    "40": 793.51,
+    "50": 1129.59,
+    "60": 1430.83,
+    "70": 1803.48,
+    "80": 2096.01,
+    "90": 2355.41,
+    "100": 3927.08
+  },
+  "with_spouse": {
+    "30": 613.11,
+    "40": 878.88,
+    "50": 1238.55,
+    "60": 1563.03,
+    "70": 1958.85,
+    "80": 2274.51,
+    "90": 2556.68,
+    "100": 4156.90
+  },
+  "with_spouse_and_one_child": {
+    "30": 655.80,
+    "40": 934.72,
+    "50": 1307.72,
+    "60": 1646.30,
+    "70": 2055.23,
+    "80": 2385.01,
+    "90": 2680.49,
+    "100": 4295.78
+  },
+  "with_spouse_and_two_children": {
+    "30": 698.49,
+    "40": 990.56,
+    "50": 1376.89,
+    "60": 1729.57,
+    "70": 2151.61,
+    "80": 2495.51,
+    "90": 2804.30,
+    "100": 4434.66
+  },
+  "veteran_alone_with_one_child": {
+    "30": 593.55,
+    "40": 849.35,
+    "50": 1198.76,
+    "60": 1513.10,
+    "70": 1900.10,
+    "80": 2207.01,
+    "90": 2479.22,
+    "100": 4065.96
+  },
+  "additional_child_under_18": {
+    "30": 28.35,
+    "40": 37.14,
+    "50": 46.37,
+    "60": 55.96,
+    "70": 65.73,
+    "80": 75.50,
+    "90": 83.91,
+    "100": 92.54
+  },
+  "additional_child_over_18_in_school": {
+    "30": 92.54,
+    "40": 120.89,
+    "50": 150.96,
+    "60": 181.03,
+    "70": 212.00,
+    "80": 243.32,
+    "90": 270.34,
+    "100": 299.50
+  },
+  "aid_and_attendance_spouse": {
+    "all_ratings": 167.73
+  },
+  "special_monthly_compensation": {
+    "loss_of_use_hand_or_foot": 120.18,
+    "loss_of_use_creative_organ": 120.18,
+    "loss_of_use_buttocks": 120.18,
+    "blindness_one_eye_5_20": 120.18,
+    "deafness_without_bone_conduction": 120.18,
+    "anatomical_loss_or_use_one_hand_or_foot": 120.18
+  }
+}

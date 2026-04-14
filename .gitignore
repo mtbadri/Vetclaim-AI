@@ -1,0 +1,54 @@
+# Documentation
+# Allow README.md, but ignore other local docs if needed
+
+# Root test file (old test.py)
+/test.py
+
+# Environment variables — never commit API keys
+.env
+.env.local
+
+# Sensitive Veteran Data — DO NOT COMMIT
+veterans/
+
+# Runtime directories
+backend/jobs/
+backend/output/
+backend/data_cache/
+
+# Claude Code session and project metadata (local only)
+.claude/
+
+# Kiro specs and steering (local only)
+.kiro/
+
+# VA portal uploaded PDFs — generated at runtime, not source code
+mock_va_portal/submissions/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Test caches
+.pytest_cache/
+.hypothesis/
+
+# Node
+node_modules/
+coverage/
+
+# macOS
+.DS_Store
+.DS_store
+**/.DS_store
+
+# VS Code workspace settings (optional — remove this line if team uses shared settings)
+.vscode/
+git_upload.md

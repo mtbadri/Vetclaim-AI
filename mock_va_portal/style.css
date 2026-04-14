@@ -1,0 +1,598 @@
+/* ============================================================
+   VetClaim AI — Mock VA Portal Styles
+   Mirrors VA.gov's design system (USWDS) closely enough to
+   be convincing in a demo without copying their actual code.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #1b1b1b;
+  background: #f0f0f0;
+}
+
+a { color: #005ea2; text-decoration: underline; }
+a:hover { color: #1a4480; }
+
+/* --- Government banner --- */
+.usa-banner {
+  background: #f0f0f0;
+  border-bottom: 1px solid #dfe1e2;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #555;
+}
+.usa-banner__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+.usa-flag { font-size: 16px; }
+
+/* --- Header --- */
+.va-header {
+  background: #112e51;
+  color: white;
+  padding: 0 16px;
+}
+.va-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.va-header__logo { display: flex; align-items: baseline; gap: 8px; }
+.va-logo-text {
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -1px;
+}
+.va-logo-subtext { font-size: 16px; color: #adc6e0; }
+
+.va-nav { display: flex; align-items: center; gap: 24px; }
+.va-nav a {
+  color: #adc6e0;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.va-nav a:hover { color: white; border-bottom-color: white; }
+.va-nav__user { color: #e0eaf4; font-size: 13px; }
+.va-nav__user strong { color: white; }
+
+/* --- Main layout --- */
+.va-main { padding: 32px 16px 48px; }
+.va-main__inner { max-width: 1200px; margin: 0 auto; }
+
+/* --- Page title --- */
+.va-page-title { margin-bottom: 24px; }
+.va-page-title h1 { font-size: 28px; font-weight: 700; color: #112e51; }
+.va-subtitle { color: #71767a; font-size: 14px; margin-top: 4px; }
+
+/* --- Rating banner --- */
+.va-rating-banner {
+  background: #112e51;
+  color: white;
+  border-radius: 6px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.va-rating-banner__item { flex: 1; text-align: center; }
+.va-rating-banner__divider { width: 1px; background: rgba(255,255,255,0.2); height: 48px; }
+.rating-number { display: block; font-size: 48px; font-weight: 900; color: #f9c642; line-height: 1; }
+.rating-label { display: block; font-size: 13px; color: #adc6e0; margin-top: 4px; }
+.pay-amount { display: block; font-size: 36px; font-weight: 700; color: white; line-height: 1; }
+.pay-label { display: block; font-size: 13px; color: #adc6e0; margin-top: 4px; }
+.status-badge {
+  display: inline-block;
+  background: #2e8540;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Content grid --- */
+.va-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* --- Cards --- */
+.va-card {
+  background: white;
+  border: 1px solid #dfe1e2;
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.va-card h2 { font-size: 20px; color: #112e51; margin-bottom: 16px; }
+.va-card h3 { font-size: 16px; color: #112e51; margin-bottom: 12px; }
+.va-card--compact { padding: 16px 20px; }
+.va-card--alert { border-left: 4px solid #e52207; }
+
+/* --- Table --- */
+.va-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.va-table th {
+  background: #f0f0f0;
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: #1b1b1b;
+  border-bottom: 2px solid #dfe1e2;
+}
+.va-table td { padding: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.va-table tr:last-child td { border-bottom: none; }
+.va-table tr:hover td { background: #f8f9fa; }
+
+.decision-granted { color: #2e8540; font-weight: 600; }
+.decision-denied { color: #b50909; font-weight: 600; }
+.rating-cell { font-weight: 700; font-size: 16px; color: #112e51; text-align: center; }
+.rating-cell--denied { color: #71767a; }
+
+.va-table-note { font-size: 13px; color: #71767a; margin-top: 12px; }
+
+/* --- Definition list --- */
+.va-dl { font-size: 14px; }
+.va-dl dt { font-weight: 700; color: #71767a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px; }
+.va-dl dd { color: #1b1b1b; margin-left: 0; }
+
+/* --- Deadline --- */
+.va-deadline { font-size: 14px; margin: 8px 0 12px; color: #1b1b1b; }
+
+/* --- Doc list --- */
+.va-doc-list { list-style: none; font-size: 14px; }
+.va-doc-list li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+.va-doc-list li:last-child { border-bottom: none; }
+
+.va-btn--download-all {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  padding: 8px 12px;
+}
+.va-btn--download-all:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Buttons --- */
+.va-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.va-btn--primary { background: #005ea2; color: white; }
+.va-btn--primary:hover { background: #1a4480; color: white; }
+.va-btn--outline { background: transparent; color: #005ea2; border: 2px solid #005ea2; }
+.va-btn--outline:hover { background: #e8f1f9; }
+
+/* --- VetClaim AI CTA banner --- */
+.vetclaim-cta {
+  background: linear-gradient(135deg, #1a4480 0%, #112e51 100%);
+  border-radius: 6px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+.vetclaim-cta__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.vetclaim-cta__text h2 { font-size: 22px; color: white; margin-bottom: 8px; }
+.vetclaim-cta__text p { color: #adc6e0; font-size: 15px; max-width: 560px; }
+.vetclaim-cta__btn { background: #f9c642; color: #112e51; font-size: 16px; padding: 14px 28px; white-space: nowrap; }
+.vetclaim-cta__btn:hover { background: #f5b800; color: #112e51; }
+
+/* --- Footer --- */
+.va-footer {
+  background: #112e51;
+  color: #adc6e0;
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 13px;
+}
+.va-footer a { color: #adc6e0; }
+.va-footer__disclaimer { margin-top: 8px; color: #71767a; font-size: 12px; }
+
+/* ============================================================
+   Audit results page (audit.html) specific styles
+   ============================================================ */
+
+.audit-hero {
+  background: linear-gradient(135deg, #1a4480 0%, #112e51 100%);
+  color: white;
+  padding: 40px 32px;
+  border-radius: 6px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.audit-hero h1 { font-size: 28px; margin-bottom: 8px; }
+.audit-hero p { color: #adc6e0; font-size: 16px; }
+
+.audit-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.audit-summary-card {
+  background: white;
+  border: 1px solid #dfe1e2;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.audit-summary-card .big-number { font-size: 40px; font-weight: 900; line-height: 1; }
+.audit-summary-card .big-number--red { color: #b50909; }
+.audit-summary-card .big-number--green { color: #2e8540; }
+.audit-summary-card .big-number--gold { color: #c05600; }
+.audit-summary-card .card-label { font-size: 13px; color: #71767a; margin-top: 6px; }
+
+.flag-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+
+.flag-item {
+  background: white;
+  border: 1px solid #dfe1e2;
+  border-radius: 4px;
+  padding: 20px 24px;
+  border-left: 5px solid #dfe1e2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.flag-item--under-rated { border-left-color: #e52207; }
+.flag-item--pact-act    { border-left-color: #c05600; }
+.flag-item--wrong-code  { border-left-color: #8b4513; }
+.flag-item--tdiu        { border-left-color: #2e8540; }
+
+.flag-item__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.flag-item__title { font-size: 17px; font-weight: 700; color: #112e51; }
+.flag-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.flag-badge--under-rated { background: #fde8e8; color: #b50909; }
+.flag-badge--pact-act    { background: #fef0e4; color: #c05600; }
+.flag-badge--wrong-code  { background: #f5ece6; color: #8b4513; }
+.flag-badge--tdiu        { background: #e7f3ea; color: #2e8540; }
+
+.flag-item__body { font-size: 14px; color: #3d4551; line-height: 1.6; }
+.flag-item__cfr  { font-size: 12px; color: #71767a; margin-top: 8px; font-style: italic; }
+.flag-item__ratings {
+  display: flex;
+  gap: 24px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+.flag-item__rating-box { text-align: center; }
+.flag-item__rating-box .r-label { font-size: 11px; color: #71767a; text-transform: uppercase; letter-spacing: 0.5px; }
+.flag-item__rating-box .r-value { font-size: 22px; font-weight: 900; }
+.r-value--current  { color: #71767a; }
+.r-value--potential { color: #2e8540; }
+.r-arrow { font-size: 24px; color: #dfe1e2; align-self: center; }
+
+.confidence-bar { margin-top: 10px; }
+.confidence-bar__label { font-size: 12px; color: #71767a; margin-bottom: 4px; }
+.confidence-bar__track { background: #f0f0f0; border-radius: 4px; height: 8px; overflow: hidden; }
+.confidence-bar__fill { height: 100%; border-radius: 4px; background: #2e8540; transition: width 1s ease; }
+
+.audit-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.va-btn--large { font-size: 16px; padding: 14px 28px; }
+
+.disclaimer {
+  background: #f8f9fa;
+  border: 1px solid #dfe1e2;
+  border-radius: 4px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #71767a;
+  line-height: 1.6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .va-content-grid { grid-template-columns: 1fr; }
+  .audit-summary-grid { grid-template-columns: 1fr 1fr; }
+  .vetclaim-cta__inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 600px) {
+  .va-rating-banner { flex-direction: column; gap: 16px; }
+  .va-rating-banner__divider { display: none; }
+  .audit-summary-grid { grid-template-columns: 1fr; }
+}
+
+/* VA Verified badge — shown next to service branch after live API confirms the value */
+.va-verified-badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2e8540;
+  background: #e7f3ea;
+  border: 1px solid #2e8540;
+  border-radius: 3px;
+  padding: 1px 6px;
+  vertical-align: middle;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   Denied claims callout — draws attention to the 2 denied rows
+   ============================================================ */
+.denied-callout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff3f3;
+  border: 1px solid #f4b8b8;
+  border-left: 4px solid #b50909;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.denied-callout__icon { font-size: 20px; flex-shrink: 0; }
+.denied-callout__text { flex: 1; font-size: 14px; color: #1b1b1b; }
+.denied-callout__btn { flex-shrink: 0; font-size: 13px; padding: 6px 14px; }
+
+/* Highlight denied rows in the conditions table */
+.table-row--denied td { background: #fff8f8; }
+.table-row--denied:hover td { background: #fff0f0; }
+
+/* ============================================================
+   Confirmation page styles
+   ============================================================ */
+
+/* Success banner at the top of confirmation.html */
+.confirm-success-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #e7f3ea;
+  border: 1px solid #2e8540;
+  border-left: 6px solid #2e8540;
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+}
+.confirm-success-banner__icon { font-size: 40px; line-height: 1; flex-shrink: 0; }
+.confirm-success-banner__text h1 { font-size: 24px; color: #1a4c2e; margin-bottom: 6px; }
+.confirm-success-banner__text p  { font-size: 15px; color: #2e5c3a; }
+
+/* Report number card — the headline proof point */
+.confirm-report-card {
+  background: #112e51;
+  color: white;
+  border-radius: 6px;
+  padding: 24px 32px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.confirm-report-card__label  { font-size: 13px; color: #adc6e0; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.confirm-report-card__number { font-size: 36px; font-weight: 900; color: #f9c642; letter-spacing: 2px; margin-bottom: 10px; }
+.confirm-report-card__meta   { font-size: 13px; color: #adc6e0; }
+
+/* Conditions under appeal list */
+.confirm-conditions-list { list-style: none; font-size: 14px; }
+.confirm-conditions-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #3d4551;
+}
+.confirm-conditions-list li:last-child { border-bottom: none; }
+.confirm-condition-code {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e8f1f9;
+  color: #1a4480;
+  padding: 2px 7px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+}
+
+/* Next steps ordered list */
+.confirm-steps-list { list-style: none; counter-reset: steps; padding: 0; }
+.confirm-steps-list li {
+  counter-increment: steps;
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+.confirm-steps-list li:last-child { border-bottom: none; }
+.confirm-steps-list li::before {
+  content: counter(steps);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: #112e51;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.confirm-steps-list li strong { display: block; color: #112e51; margin-bottom: 2px; }
+.confirm-steps-list li span   { color: #71767a; }
+
+/* Save confirmation number box */
+.confirm-save-number {
+  font-size: 18px;
+  font-weight: 900;
+  color: #112e51;
+  background: #f0f4f8;
+  border: 2px dashed #adc6e0;
+  border-radius: 4px;
+  padding: 10px 16px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Subtitle text inside table cells */
+.doc-subtitle { font-size: 12px; color: #71767a; font-weight: 400; }
+
+/* ── Submission notification banner (injected by va_api.js) ── */
+.submission-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #e7f3ea;
+  border: 1px solid #2e8540;
+  border-left: 5px solid #2e8540;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.submission-banner__icon { font-size: 24px; flex-shrink: 0; }
+.submission-banner__text { flex: 1; font-size: 14px; color: #1b1b1b; }
+.submission-banner__text code {
+  font-family: monospace;
+  background: #d4edda;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 13px;
+}
+.submission-banner__btn { flex-shrink: 0; }
+
+/* ── Confirmation page loading state ── */
+.confirm-loading {
+  text-align: center;
+  padding: 64px;
+  color: #71767a;
+  font-size: 16px;
+}
+
+/* ── PDF viewer iframe ── */
+.confirm-pdf-viewer {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #dfe1e2;
+  border-radius: 4px;
+  margin-top: 8px;
+  background: #f0f0f0;
+}
+
+/* VA Forms API verified badge — shown on the NOD row in the documents table */
+.va-form-badge {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a4480;
+  background: #e8f1f9;
+  border: 1px solid #adc6e0;
+  border-radius: 3px;
+  padding: 2px 7px;
+  letter-spacing: 0.3px;
+}
+.va-form-badge a { color: #1a4480; }
+
+/* ============================================================
+   Profile switcher dropdown — nav top-right
+   ============================================================ */
+
+.va-nav__user {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* The dropdown panel */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: white;
+  border: 1px solid #dfe1e2;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  min-width: 240px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.profile-dropdown__item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.1s;
+}
+.profile-dropdown__item:last-child { border-bottom: none; }
+.profile-dropdown__item:hover { background: #f0f4f8; }
+.profile-dropdown__item--active { background: #e8f1f9; }
+
+.profile-dropdown__name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #112e51;
+}
+.profile-dropdown__meta {
+  display: block;
+  font-size: 12px;
+  color: #71767a;
+  margin-top: 2px;
+}
+
+/* ── Filed Appeals table (populated by va_api.js) ── */
+.appeals-count-badge {
+  display: inline-block;
+  background: #e52207;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 1px 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.appeals-row td { vertical-align: middle; }
+.conf-code {
+  font-family: monospace;
+  font-size: 13px;
+  background: #e8f1f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #112e51;
+}
+.conditions-cell {
+  font-size: 13px;
+  max-width: 260px;
+  color: #3d4551;
+}
+.date-cell { font-size: 13px; white-space: nowrap; color: #71767a; }
+.va-btn--sm { padding: 5px 12px; font-size: 13px; }
+.va-subtitle-small { font-size: 13px; color: #71767a; margin-bottom: 12px; }
