@@ -125,7 +125,7 @@ export default function CallingAgentPage({ onBack }) {
             <p className="text-xs text-red-500 mt-1">Enter a valid 10-digit US number</p>
           )}
           {e164 && (
-            <p className="text-xs text-green-600 mt-1">Vapi will call {e164}</p>
+            <p className="text-xs text-green-600 mt-1">AI agent will call {e164}</p>
           )}
         </div>
 
@@ -152,7 +152,7 @@ export default function CallingAgentPage({ onBack }) {
         {status === 'success' && (
           <div className="mb-6 px-4 py-3 rounded-lg text-xs text-green-700 bg-green-50 border border-green-200 space-y-1">
             <p className="font-semibold">Call initiated successfully!</p>
-            <p>Vapi is calling your phone now. Answer it to begin.</p>
+            <p>Your AI agent is calling now. Answer it to begin.</p>
           </div>
         )}
 
@@ -268,7 +268,7 @@ export default function CallingAgentPage({ onBack }) {
         )}
 
         <p className="text-center text-xs text-gray-400 mt-10">
-          Powered by Vapi · Requires VAPI_PRIVATE_KEY in .env
+          Powered by VetClaim AI automated calling
         </p>
       </main>
     </div>

@@ -320,7 +320,7 @@ function normalizePhone(raw) {
   return null
 }
 
-function VACallSection() {
+function VACallSection({ veteranName }) {
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [callData, setCallData] = useState(null)
@@ -340,7 +340,7 @@ function VACallSection() {
       const res = await fetch('/api/call-va', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone_number: e164 }),
+        body: JSON.stringify({ phone_number: e164, veteran_name: veteranName || 'Veteran' }),
       })
       const data = await res.json()
       if (!res.ok || data.status === 'error') throw new Error(data.message || data.error || 'Failed to start call')
@@ -422,7 +422,7 @@ function VACallSection() {
           <p className="text-xs text-red-500 mt-1">Enter a valid 10-digit US number</p>
         )}
         {e164 && (
-          <p className="text-xs text-green-600 mt-1">Vapi will call {e164}</p>
+          <p className="text-xs text-green-600 mt-1">AI agent will call {e164}</p>
         )}
       </div>
 
@@ -432,7 +432,7 @@ function VACallSection() {
       {status === 'success' && (
         <div className="px-4 py-3 rounded-xl text-xs text-green-700 bg-green-50 border border-green-200 space-y-1">
           <p className="font-semibold">Call initiated successfully!</p>
-          <p>Vapi is calling {e164} now. Answer it to begin.</p>
+          <p>Your AI agent is calling {e164} now. Answer it to begin.</p>
         </div>
       )}
 
@@ -770,7 +770,7 @@ export default function Dashboard({ result, jobId, onNewClaim }) {
             <FormsSection vaFormLinks={vaFormLinks} jobId={jobId} />
           </div>
           <div className={`max-w-3xl mx-auto px-6 md:px-8 py-10 pb-24 md:pb-10 ${activeSection === 'vacall' ? '' : 'hidden'}`}>
-            <VACallSection />
+            <VACallSection veteranName={veteranName} />
           </div>
           <div className={`flex flex-col px-6 md:px-8 py-10 pb-24 md:pb-10 h-full ${activeSection === 'chat' ? '' : 'hidden'}`}>
             <div className="max-w-3xl mx-auto w-full flex flex-col flex-1" style={{ minHeight: 0 }}>

@@ -326,6 +326,7 @@ def submit_appeal():
 def call_va_rep():
     body = request.get_json(force=True, silent=True) or {}
     phone_number = body.get("phone_number", "").strip()
+    veteran_name = body.get("veteran_name", "Veteran").strip() or "Veteran"
     if not phone_number:
         return jsonify({"error": "phone_number is required"}), 400
 
@@ -339,7 +340,7 @@ def call_va_rep():
         "phoneNumberId": "4882efe5-5767-44ef-bb42-4aaf3752dda4",
         "customer": {"number": phone_number},
         "assistantOverrides": {
-            "variableValues": {"veteran_name": "Demo Veteran"}
+            "variableValues": {"veteran_name": veteran_name}
         }
     }
     try:
